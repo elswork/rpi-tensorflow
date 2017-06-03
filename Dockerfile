@@ -1,41 +1,43 @@
-FROM resin/rpi-raspbian
+FROM armv7/armhf-ubuntu:16.04
+#FROM resin/rpi-raspbian
 
 MAINTAINER Eloy Lopez <elswork@gmail.com>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-        libfreetype6-dev \
-        libpng12-dev \
-        libzmq3-dev \
-        pkg-config \
-        python \
-        python-dev \
-	python-numpy \
-        python-scipy \
-        rsync \
-	software-properties-common \
-        unzip \
-	&& \
-	apt-get clean && \
-        rm -rf /var/lib/apt/lists/*
+    build-essential \
+    curl \
+    libfreetype6-dev \
+    libpng12-dev \
+    libzmq3-dev \
+    pkg-config \
+    python \
+    python-dev \
+    python-pillow \
+    python-h5py \
+    rsync \
+    software-properties-common \
+    unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
         rm get-pip.py
 
-RUN pip --no-cache-dir install \
-        ipykernel \
-        jupyter \
-        matplotlib \
-        sklearn \
-        pandas \
-	&& \
-         python -m ipykernel.kernelspec
+ RUN pip --no-cache-dir install \
+     ipykernel \
+     jupyter \
+     matplotlib  \
+#     sklearn \
+     pandas && \
+     python -m ipykernel.kernelspec
 
 ADD tensorflow-1.0.0-cp27-none-linux_armv7l.whl .
 
-RUN pip install tensorflow-1.0.0-cp27-none-linux_armv7l.whl
+RUN pip --no-cache-dir install tensorflow-1.0.0-cp27-none-linux_armv7l.whl
+
+#RUN pip --no-cache-dir install \
+#https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
@@ -55,4 +57,4 @@ EXPOSE 8888
 
 WORKDIR "/notebooks"
 
-CMD ["/run_jupyter.sh"]
+CMD ["/run_jupyter.sh", "--allow-root"]
