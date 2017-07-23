@@ -14,7 +14,7 @@ A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.2.1](http
 ## Thanks to
 
 - [Romilly Cocking for the idea](https://github.com/romilly/rpi-docker-tensorflow)
-- [Pi tensorflow whl file](https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl) from [Sam Abrahm's Github project](https://github.com/samjabrahams/tensorflow-on-raspberry-pi)
+- [Pi tensorflow whl file](https://github.com/DeftWork/rpi-tensorflow/blob/master/tensorflow-1.2.1-cp27-none-linux_armv7l.whl) that i builded thanks to [Sam Abrahm's Step-By-Step Guide for build Tensorflow for Raspberry Pi](https://github.com/samjabrahams/tensorflow-on-raspberry-pi/blob/master/GUIDE.md)
 
 ## My Real Usage Example
 
