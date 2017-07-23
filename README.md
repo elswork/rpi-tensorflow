@@ -1,8 +1,11 @@
 # Supercharged Machine Learning ToolBox for ARM
 
-A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.1.0](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
+A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.2.1](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
 
 > Be aware! You should read carefully the usage documentation of every tool!
+
+## Latest Changes
+- Upgraded from Tensorflow 1.1.0 to 1.2.1
 
 ## Details
 - [Docker Hub](https://hub.docker.com/r/elswork/rpi-tensorflow/)
@@ -23,7 +26,7 @@ $ docker run -d -p 8888:8888 elswork/rpi-tensorflow:latest
 A more complex sample:
 ```sh
 $ docker run -d -p 8888:8888 \
- -p 0.0.0.0:7007:6006 \
+ -p 0.0.0.0:6006:6006 \
  -v ~/myNotebooks:/notebooks/myNotebooks \
  --restart=unless-stopped \
  elswork/rpi-tensorflow:latest
@@ -36,4 +39,4 @@ With the second example you can run TensorBoard executing this command in the co
 $ tensorboard --logdir=path/to/log-directory --host=0.0.0.0
 
 ```
-And pointing your browser to `http://localhost:7007`
+And pointing your browser to `http://localhost:6006`
