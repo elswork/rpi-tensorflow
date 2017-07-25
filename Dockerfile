@@ -1,4 +1,5 @@
-FROM armv7/armhf-ubuntu:16.04
+FROM arm32v7/ubuntu:16.04
+#FROM armv7/armhf-ubuntu:16.04
 #FROM resin/rpi-raspbian
 
 MAINTAINER Eloy Lopez <elswork@gmail.com>
@@ -32,9 +33,10 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
      pandas && \
      python -m ipykernel.kernelspec
 
-ADD tensorflow-1.2.1-cp27-none-linux_armv7l.whl .
+ADD tensorflow-1.2.1-cp27-none-linux_armv7l.whl . 
 
-RUN pip --no-cache-dir install tensorflow-1.2.1-cp27-none-linux_armv7l.whl
+RUN pip --no-cache-dir install tensorflow-1.2.1-cp27-none-linux_armv7l.whl && \
+    rm -f tensorflow-1.2.1-cp27-none-linux_armv7l.whl
 
 #RUN pip --no-cache-dir install \
 #https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl

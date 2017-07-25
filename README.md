@@ -5,6 +5,7 @@ A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.2.1](http
 > Be aware! You should read carefully the usage documentation of every tool!
 
 ## Latest Changes
+- Replaced base image by a [Docker Official Image](https://github.com/docker-library/official-images)
 - Upgraded from Tensorflow 1.1.0 to 1.2.1
 
 ## Details
