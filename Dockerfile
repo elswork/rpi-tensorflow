@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-h5py \
     rsync \
     software-properties-common \
-    unzip && \
+    unzip \
+    && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -29,8 +30,11 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
      ipykernel \
      jupyter \
      matplotlib  \
-#     sklearn \
-     pandas && \
+     numpy \
+     pandas \
+     # scipy \
+     # sklearn \
+     && \
      python -m ipykernel.kernelspec
 
 ADD tensorflow-1.2.1-cp27-none-linux_armv7l.whl . 
