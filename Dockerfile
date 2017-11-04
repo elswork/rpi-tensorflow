@@ -2,7 +2,7 @@ FROM arm32v7/ubuntu:16.04
 #FROM armv7/armhf-ubuntu:16.04
 #FROM resin/rpi-raspbian
 
-MAINTAINER Eloy Lopez <elswork@gmail.com>
+LABEL mantainer="Eloy Lopez <elswork@gmail.com>"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
