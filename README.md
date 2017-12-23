@@ -5,7 +5,7 @@ A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.4.0](http
 > Be aware! You should read carefully the usage documentation of every tool!
 
 ## Latest Changes
-1.3.0
+1.4.0
 -----
 - Upgraded from Tensorflow 1.3.0 to 1.4.0
 - Replaced Tensorflow local binary to [tensorflow-1.4.0-cp27-none-any.whl](http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl)
