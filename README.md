@@ -1,10 +1,15 @@
 # Supercharged Machine Learning ToolBox for ARM
 
-A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.3.0](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
+A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.4.0](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
 
 > Be aware! You should read carefully the usage documentation of every tool!
 
 ## Latest Changes
+1.3.0
+-----
+- Upgraded from Tensorflow 1.3.0 to 1.4.0
+- Replaced Tensorflow local binary to [tensorflow-1.4.0-cp27-none-any.whl](http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl)
+
 1.3.0
 -----
 - Upgraded from Tensorflow 1.2.1 to 1.3.0
@@ -21,7 +26,7 @@ A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.3.0](http
 ## Thanks to
 
 - [Romilly Cocking for the idea](https://github.com/romilly/rpi-docker-tensorflow)
-- [Pi tensorflow whl file](https://github.com/DeftWork/rpi-tensorflow/blob/master/tensorflow-1.2.1-cp27-none-linux_armv7l.whl) that i builded thanks to [Sam Abrahm's Step-By-Step Guide for build Tensorflow for Raspberry Pi](https://github.com/samjabrahams/tensorflow-on-raspberry-pi/blob/master/GUIDE.md)
+- Pi tensorflow whl file that i builded thanks to [Sam Abrahm's Step-By-Step Guide for build Tensorflow for Raspberry Pi](https://github.com/samjabrahams/tensorflow-on-raspberry-pi/blob/master/GUIDE.md)
 
 ## My Real Usage Example
 
