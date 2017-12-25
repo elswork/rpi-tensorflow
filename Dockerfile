@@ -1,6 +1,4 @@
 FROM arm32v7/ubuntu:16.04
-#FROM armv7/armhf-ubuntu:16.04
-#FROM resin/rpi-raspbian
 
 LABEL mantainer="Eloy Lopez <elswork@gmail.com>"
 
@@ -15,13 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-dev \
     python-pillow \
     python-h5py \
-    python-numpy \
-    python-matplotlib \
-    # python-mpltoolkits.basemap \ 
     python-scipy \
-    python-sklearn \
-    # python-statsmodels \ 
-    python-pandas \
     rsync \
     software-properties-common \
     unzip \
@@ -35,18 +27,15 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
         rm get-pip.py
 
  RUN pip --no-cache-dir install \
+     matplotlib \
+     sklearn \
+     pandas \
      ipykernel \
      jupyter \
-     # matplotlib  \
-     # numpy \
-     # pandas \
-     # scipy \
-     # scikit-learn \
      && \
      python -m ipykernel.kernelspec
 
-#ADD tensorflow-1.2.1-cp27-none-linux_armv7l.whl . 
-ADD tensorflow-1.3.0-cp27-none-linux_armv7l.whl .
+# ADD tensorflow-1.3.0-cp27-none-linux_armv7l.whl .
 
 RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl && \
     rm -f tensorflow-1.4.0-cp27-none-any.whl
