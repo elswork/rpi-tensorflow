@@ -37,24 +37,19 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 
 # ADD tensorflow-1.3.0-cp27-none-linux_armv7l.whl .
 
-RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl && \
-    rm -f tensorflow-1.4.0-cp27-none-any.whl
+RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.5.0rc1-cp27-none-any.whl	&& \
+    rm -f tensorflow-1.5.0rc1-cp27-none-any.whl
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
 # Copy sample notebooks.
 COPY notebooks /notebooks
 
-# Jupyter has issues with being run directly:
-#   https://github.com/ipython/ipython/issues/7062
-# We just add a little wrapper script.
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
-# TensorBoard
-EXPOSE 6006
-# IPython
-EXPOSE 8888
+# TensorBoard & Jupyter
+EXPOSE 6006 8888
 
 WORKDIR "/notebooks"
 

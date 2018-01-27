@@ -13,39 +13,49 @@ Step 4/14 : RUN curl -O https://bootstrap.pypa.io/get-pip.py &&     python get-p
 Step 5/14 : RUN pip --no-cache-dir install      matplotlib      sklearn      pandas      ipykernel      jupyter      &&      python -m ipykernel.kernelspec
  ---> Using cache
  ---> 5ce9682d6a04
-Step 6/14 : RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl &&     rm -f tensorflow-1.4.0-cp27-none-any.whl
- ---> Running in 8031b8dbeeca
-Collecting tensorflow==1.4.0 from http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl
-  Downloading http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl (56.3MB)
-Requirement already satisfied: enum34>=1.1.6 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.4.0)
-Collecting numpy>=1.12.1 (from tensorflow==1.4.0)
-  Downloading numpy-1.13.3.zip (5.0MB)
-Collecting tensorflow-tensorboard (from tensorflow==1.4.0)
-  Downloading tensorflow_tensorboard-0.1.8-py2-none-any.whl (1.6MB)
-Collecting absl-py>=0.1.6 (from tensorflow==1.4.0)
-  Downloading absl-py-0.1.7.tar.gz (78kB)
-Requirement already satisfied: six>=1.10.0 in /usr/lib/python2.7/dist-packages (from tensorflow==1.4.0)
-Collecting protobuf>=3.4.0 (from tensorflow==1.4.0)
+Step 6/14 : RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.5.0rc1-cp27-none-any.whl	&&     rm -f tensorflow-1.5.0rc1-cp27-none-any.whl
+ ---> Running in adb371b61bff
+Collecting tensorflow==1.5.0rc1 from http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.5.0rc1-cp27-none-any.whl
+  Downloading http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.5.0rc1-cp27-none-any.whl (57.2MB)
+Collecting termcolor>=1.1.0 (from tensorflow==1.5.0rc1)
+  Downloading termcolor-1.1.0.tar.gz
+Requirement already satisfied: enum34>=1.1.6 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.5.0rc1)
+Collecting numpy>=1.12.1 (from tensorflow==1.5.0rc1)
+  Downloading numpy-1.14.0.zip (4.9MB)
+Collecting gast>=0.2.0 (from tensorflow==1.5.0rc1)
+  Downloading gast-0.2.0.tar.gz
+Collecting absl-py>=0.1.6 (from tensorflow==1.5.0rc1)
+  Downloading absl-py-0.1.9.tar.gz (79kB)
+Requirement already satisfied: six>=1.10.0 in /usr/lib/python2.7/dist-packages (from tensorflow==1.5.0rc1)
+Collecting protobuf>=3.4.0 (from tensorflow==1.5.0rc1)
   Downloading protobuf-3.5.1-py2.py3-none-any.whl (388kB)
-Requirement already satisfied: wheel in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.4.0)
-Collecting backports.weakref>=1.0rc1 (from tensorflow==1.4.0)
+Collecting tensorflow-tensorboard>=0.4.0 (from tensorflow==1.5.0rc1)
+  Downloading tensorflow_tensorboard-1.5.0-py2-none-any.whl (3.0MB)
+Requirement already satisfied: wheel in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.5.0rc1)
+Collecting astor>=0.6.0 (from tensorflow==1.5.0rc1)
+  Downloading astor-0.6.2-py2.py3-none-any.whl
+Collecting backports.weakref>=1.0rc1 (from tensorflow==1.5.0rc1)
   Downloading backports.weakref-1.0.post1-py2.py3-none-any.whl
-Collecting mock>=2.0.0 (from tensorflow==1.4.0)
+Collecting mock>=2.0.0 (from tensorflow==1.5.0rc1)
   Downloading mock-2.0.0-py2.py3-none-any.whl (56kB)
-Collecting werkzeug>=0.11.10 (from tensorflow-tensorboard->tensorflow==1.4.0)
-  Downloading Werkzeug-0.13-py2.py3-none-any.whl (311kB)
-Collecting markdown>=2.6.8 (from tensorflow-tensorboard->tensorflow==1.4.0)
-  Downloading Markdown-2.6.10.zip (414kB)
-Collecting html5lib==0.9999999 (from tensorflow-tensorboard->tensorflow==1.4.0)
+Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.5.0rc1)
+Collecting werkzeug>=0.11.10 (from tensorflow-tensorboard>=0.4.0->tensorflow==1.5.0rc1)
+  Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+Collecting markdown>=2.6.8 (from tensorflow-tensorboard>=0.4.0->tensorflow==1.5.0rc1)
+  Downloading Markdown-2.6.11-py2.py3-none-any.whl (78kB)
+Collecting html5lib==0.9999999 (from tensorflow-tensorboard>=0.4.0->tensorflow==1.5.0rc1)
   Downloading html5lib-0.9999999.tar.gz (889kB)
-Collecting bleach==1.5.0 (from tensorflow-tensorboard->tensorflow==1.4.0)
+Collecting futures>=3.1.1 (from tensorflow-tensorboard>=0.4.0->tensorflow==1.5.0rc1)
+  Downloading futures-3.2.0-py2-none-any.whl
+Collecting bleach==1.5.0 (from tensorflow-tensorboard>=0.4.0->tensorflow==1.5.0rc1)
   Downloading bleach-1.5.0-py2.py3-none-any.whl
-Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.4.0)
-Collecting funcsigs>=1; python_version < "3.3" (from mock>=2.0.0->tensorflow==1.4.0)
+Collecting funcsigs>=1; python_version < "3.3" (from mock>=2.0.0->tensorflow==1.5.0rc1)
   Downloading funcsigs-1.0.2-py2.py3-none-any.whl
-Collecting pbr>=0.11 (from mock>=2.0.0->tensorflow==1.4.0)
+Collecting pbr>=0.11 (from mock>=2.0.0->tensorflow==1.5.0rc1)
   Downloading pbr-3.1.1-py2.py3-none-any.whl (99kB)
-Installing collected packages: numpy, werkzeug, markdown, html5lib, protobuf, bleach, tensorflow-tensorboard, absl-py, backports.weakref, funcsigs, pbr, mock, tensorflow
+Installing collected packages: termcolor, numpy, gast, absl-py, protobuf, werkzeug, markdown, html5lib, futures, bleach, tensorflow-tensorboard, astor, backports.weakref, funcsigs, pbr, mock, tensorflow
+  Running setup.py install for termcolor: started
+    Running setup.py install for termcolor: finished with status 'done'
   Found existing installation: numpy 1.11.0
     Uninstalling numpy-1.11.0:
       Successfully uninstalled numpy-1.11.0
@@ -57,9 +67,12 @@ Installing collected packages: numpy, werkzeug, markdown, html5lib, protobuf, bl
     Running setup.py install for numpy: still running...
     Running setup.py install for numpy: still running...
     Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
     Running setup.py install for numpy: finished with status 'done'
-  Running setup.py install for markdown: started
-    Running setup.py install for markdown: finished with status 'done'
+  Running setup.py install for gast: started
+    Running setup.py install for gast: finished with status 'done'
+  Running setup.py install for absl-py: started
+    Running setup.py install for absl-py: finished with status 'done'
   Found existing installation: html5lib 1.0.1
     Uninstalling html5lib-1.0.1:
       Successfully uninstalled html5lib-1.0.1
@@ -68,37 +81,35 @@ Installing collected packages: numpy, werkzeug, markdown, html5lib, protobuf, bl
   Found existing installation: bleach 2.1.2
     Uninstalling bleach-2.1.2:
       Successfully uninstalled bleach-2.1.2
-  Running setup.py install for absl-py: started
-    Running setup.py install for absl-py: finished with status 'done'
-Successfully installed absl-py-0.1.7 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 html5lib-0.9999999 markdown-2.6.10 mock-2.0.0 numpy-1.13.3 pbr-3.1.1 protobuf-3.5.1 tensorflow-1.4.0 tensorflow-tensorboard-0.1.8 werkzeug-0.13
- ---> f97025c9f4f3
-Removing intermediate container 8031b8dbeeca
+Successfully installed absl-py-0.1.9 astor-0.6.2 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 futures-3.2.0 gast-0.2.0 html5lib-0.9999999 markdown-2.6.11 mock-2.0.0 numpy-1.14.0 pbr-3.1.1 protobuf-3.5.1 tensorflow-1.5.0rc1 tensorflow-tensorboard-1.5.0 termcolor-1.1.0 werkzeug-0.14.1
+ ---> 0080e1127685
+Removing intermediate container adb371b61bff
 Step 7/14 : COPY jupyter_notebook_config.py /root/.jupyter/
- ---> 64dc0d37e631
-Removing intermediate container 92835a80684e
+ ---> 9a26981dd971
+Removing intermediate container c4da9f6500b4
 Step 8/14 : COPY notebooks /notebooks
- ---> 490f3847a02a
-Removing intermediate container e3184891999d
+ ---> 37a90528e1f8
+Removing intermediate container fb7c7af0e43f
 Step 9/14 : COPY run_jupyter.sh /
- ---> 9ce155a14071
-Removing intermediate container 32c92c6b5644
+ ---> da608ce0411a
+Removing intermediate container 4d59e7bcc3c7
 Step 10/14 : RUN chmod +x /run_jupyter.sh
- ---> Running in 8c6dd8bbce75
- ---> c3bc9935b93b
-Removing intermediate container 8c6dd8bbce75
+ ---> Running in fa54bacfed69
+ ---> ee3260d95cab
+Removing intermediate container fa54bacfed69
 Step 11/14 : EXPOSE 6006
- ---> Running in 0fe16f9f7eff
- ---> be06bff73963
-Removing intermediate container 0fe16f9f7eff
+ ---> Running in e1abca203eba
+ ---> 437e94b3358f
+Removing intermediate container e1abca203eba
 Step 12/14 : EXPOSE 8888
- ---> Running in e81a84bf5c69
- ---> f2ba93e67b35
-Removing intermediate container e81a84bf5c69
+ ---> Running in b5577bf618e9
+ ---> c584fac8d657
+Removing intermediate container b5577bf618e9
 Step 13/14 : WORKDIR "/notebooks"
- ---> 90ee967ef510
-Removing intermediate container dab621305943
+ ---> b1f9581baeb1
+Removing intermediate container 1c7e355e4768
 Step 14/14 : CMD /run_jupyter.sh --allow-root
- ---> Running in a4a624e1cca0
- ---> 3f3a5a5860f8
-Removing intermediate container a4a624e1cca0
-Successfully built 3f3a5a5860f8
+ ---> Running in 602d983f2a1b
+ ---> 8b0f08a18e94
+Removing intermediate container 602d983f2a1b
+Successfully built 8b0f08a18e94
