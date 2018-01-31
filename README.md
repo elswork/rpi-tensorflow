@@ -5,6 +5,11 @@ A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.5.0 rc1](
 > Be aware! You should read carefully the usage documentation of every tool!
 
 ## Latest Changes
+1.5.0
+-----
+- Upgraded from Tensorflow 1.5.0 rc1 to 1.5.0
+- Replace with new latest binary
+
 1.5.0 rc1
 -----
 - Upgraded from Tensorflow 1.4.0 to 1.5.0rc1
