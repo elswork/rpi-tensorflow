@@ -1,4 +1,4 @@
-FROM arm32v7/ubuntu:16.04
+FROM ubuntu:16.04
 
 LABEL mantainer="Eloy Lopez <elswork@gmail.com>"
 
@@ -37,8 +37,8 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 
 # ADD tensorflow-1.3.0-cp27-none-linux_armv7l.whl .
 
-RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.5.0-cp27-none-any.whl	&& \
-    rm -f tensorflow-1.5.0-cp27-none-any.whl
+RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl	 && \
+    rm -f tensorflow-1.6.0rc1-cp27-none-any.whl	
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 

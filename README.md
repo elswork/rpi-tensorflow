@@ -1,10 +1,16 @@
 # Supercharged Machine Learning ToolBox for ARM
 
-A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.5.0 rc1](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
+A [Docker](http://docker.com) image for ARM devices with [Tensorflow 1.6.0 rc1](https://www.tensorflow.org/) an open source software library for numerical computation using data flow graphs that will let you play and learn distinct Machine Learning techniques over [Jupyter Notebook](http://jupyter.org/) an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Computational Narratives as the Engine of Collaborative Data Science.   
 
 > Be aware! You should read carefully the usage documentation of every tool!
 
 ## Latest Changes
+1.6.0 rc1
+-----
+- Upgraded from Tensorflow 1.5.0 to 1.6.0rc1
+- Replace with new latest binary
+- Replaced base image with ubuntu:16.04 the same as official tensorflow container
+
 1.5.0
 -----
 - Upgraded from Tensorflow 1.5.0 rc1 to 1.5.0

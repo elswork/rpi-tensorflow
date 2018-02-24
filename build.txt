@@ -1,0 +1,122 @@
+Sending build context to Docker daemon   301 MB
+Step 1/13 : FROM ubuntu:16.04
+ ---> e6bce28de62e
+Step 2/13 : LABEL mantainer "Eloy Lopez <elswork@gmail.com>"
+ ---> Using cache
+ ---> 727eb34b38ed
+Step 3/13 : RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     curl     libfreetype6-dev     libpng12-dev     libzmq3-dev     pkg-config     python     python-dev     python-pillow     python-h5py     python-scipy     rsync     software-properties-common     unzip     git     &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> be2be6a9a5bc
+Step 4/13 : RUN curl -O https://bootstrap.pypa.io/get-pip.py &&     python get-pip.py &&         rm get-pip.py
+ ---> Using cache
+ ---> 7b4350702e99
+Step 5/13 : RUN pip --no-cache-dir install      matplotlib      sklearn      pandas      ipykernel      jupyter      &&      python -m ipykernel.kernelspec
+ ---> Using cache
+ ---> c839fe105535
+Step 6/13 : RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl	 &&     rm -f tensorflow-1.6.0rc1-cp27-none-any.whl
+ ---> Running in e803efa79d31
+Collecting tensorflow==1.6.0rc1 from http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl
+  Downloading http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl (58.5MB)
+Collecting mock>=2.0.0 (from tensorflow==1.6.0rc1)
+  Downloading mock-2.0.0-py2.py3-none-any.whl (56kB)
+Collecting backports.weakref>=1.0rc1 (from tensorflow==1.6.0rc1)
+  Downloading backports.weakref-1.0.post1-py2.py3-none-any.whl
+Collecting astor>=0.6.0 (from tensorflow==1.6.0rc1)
+  Downloading astor-0.6.2-py2.py3-none-any.whl
+Requirement already satisfied: wheel in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
+Collecting protobuf>=3.4.0 (from tensorflow==1.6.0rc1)
+  Downloading protobuf-3.5.1-py2.py3-none-any.whl (388kB)
+Collecting numpy>=1.13.3 (from tensorflow==1.6.0rc1)
+  Downloading numpy-1.14.1.zip (4.9MB)
+Collecting tensorboard<1.7.0,>=1.6.0 (from tensorflow==1.6.0rc1)
+  Downloading tensorboard-1.6.0-py2-none-any.whl (3.0MB)
+Requirement already satisfied: six>=1.10.0 in /usr/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
+Collecting grpcio>=1.8.6 (from tensorflow==1.6.0rc1)
+  Downloading grpcio-1.9.1.tar.gz (10.0MB)
+Collecting absl-py>=0.1.6 (from tensorflow==1.6.0rc1)
+  Downloading absl-py-0.1.10.tar.gz (79kB)
+Requirement already satisfied: enum34>=1.1.6 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
+Collecting gast>=0.2.0 (from tensorflow==1.6.0rc1)
+  Downloading gast-0.2.0.tar.gz
+Collecting termcolor>=1.1.0 (from tensorflow==1.6.0rc1)
+  Downloading termcolor-1.1.0.tar.gz
+Collecting funcsigs>=1; python_version < "3.3" (from mock>=2.0.0->tensorflow==1.6.0rc1)
+  Downloading funcsigs-1.0.2-py2.py3-none-any.whl
+Collecting pbr>=0.11 (from mock>=2.0.0->tensorflow==1.6.0rc1)
+  Downloading pbr-3.1.1-py2.py3-none-any.whl (99kB)
+Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.6.0rc1)
+Collecting futures>=3.1.1; python_version < "3" (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
+  Downloading futures-3.2.0-py2-none-any.whl
+Collecting bleach==1.5.0 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
+  Downloading bleach-1.5.0-py2.py3-none-any.whl
+Collecting markdown>=2.6.8 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
+  Downloading Markdown-2.6.11-py2.py3-none-any.whl (78kB)
+Collecting html5lib==0.9999999 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
+  Downloading html5lib-0.9999999.tar.gz (889kB)
+Collecting werkzeug>=0.11.10 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
+  Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, protobuf, numpy, futures, html5lib, bleach, markdown, werkzeug, tensorboard, grpcio, absl-py, gast, termcolor, tensorflow
+  Found existing installation: numpy 1.11.0
+    Uninstalling numpy-1.11.0:
+      Successfully uninstalled numpy-1.11.0
+  Running setup.py install for numpy: started
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: finished with status 'done'
+  Found existing installation: html5lib 1.0.1
+    Uninstalling html5lib-1.0.1:
+      Successfully uninstalled html5lib-1.0.1
+  Running setup.py install for html5lib: started
+    Running setup.py install for html5lib: finished with status 'done'
+  Found existing installation: bleach 2.1.2
+    Uninstalling bleach-2.1.2:
+      Successfully uninstalled bleach-2.1.2
+  Running setup.py install for grpcio: started
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: still running...
+    Running setup.py install for grpcio: finished with status 'done'
+  Running setup.py install for absl-py: started
+    Running setup.py install for absl-py: finished with status 'done'
+  Running setup.py install for gast: started
+    Running setup.py install for gast: finished with status 'done'
+  Running setup.py install for termcolor: started
+    Running setup.py install for termcolor: finished with status 'done'
+Successfully installed absl-py-0.1.10 astor-0.6.2 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 futures-3.2.0 gast-0.2.0 grpcio-1.9.1 html5lib-0.9999999 markdown-2.6.11 mock-2.0.0 numpy-1.14.1 pbr-3.1.1 protobuf-3.5.1 tensorboard-1.6.0 tensorflow-1.6.0rc1 termcolor-1.1.0 werkzeug-0.14.1
+ ---> 8cbfc4f02476
+Removing intermediate container e803efa79d31
+Step 7/13 : COPY jupyter_notebook_config.py /root/.jupyter/
+ ---> 876127a5d5d9
+Removing intermediate container be2b086a01c5
+Step 8/13 : COPY notebooks /notebooks
+ ---> c7f004d77a95
+Removing intermediate container b39d3cdc4cfe
+Step 9/13 : COPY run_jupyter.sh /
+ ---> 69d1d35d4a1d
+Removing intermediate container 933f2063ff28
+Step 10/13 : RUN chmod +x /run_jupyter.sh
+ ---> Running in 08b5759a239c
+ ---> 123e89bcaf39
+Removing intermediate container 08b5759a239c
+Step 11/13 : EXPOSE 6006 8888
+ ---> Running in 48d3041a6098
+ ---> b6dd4eb9a3eb
+Removing intermediate container 48d3041a6098
+Step 12/13 : WORKDIR "/notebooks"
+ ---> e82aae9172aa
+Removing intermediate container ea6c14068bde
+Step 13/13 : CMD /run_jupyter.sh --allow-root
+ ---> Running in e1cdf7cdea10
+ ---> 0d5b32000504
+Removing intermediate container e1cdf7cdea10
+Successfully built 0d5b32000504
