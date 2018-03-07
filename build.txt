@@ -1,20 +1,190 @@
-Sending build context to Docker daemon   301 MB
-Step 1/13 : FROM ubuntu:16.04
+Sending build context to Docker daemon 181.5 MB
+Step 1/10 : FROM ubuntu:16.04
  ---> e6bce28de62e
-Step 2/13 : LABEL mantainer "Eloy Lopez <elswork@gmail.com>"
+Step 2/10 : LABEL mantainer "Eloy Lopez <elswork@gmail.com>"
  ---> Using cache
- ---> 727eb34b38ed
-Step 3/13 : RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     curl     libfreetype6-dev     libpng12-dev     libzmq3-dev     pkg-config     python     python-dev     python-pillow     python-h5py     python-scipy     rsync     software-properties-common     unzip     git     &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+ ---> 5636b4e2e089
+Step 3/10 : RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     curl     libfreetype6-dev     libpng12-dev     libzmq3-dev     pkg-config     python     python-dev     python-pip     python-setuptools     python-scipy     rsync     software-properties-common     unzip     git     &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
  ---> Using cache
- ---> be2be6a9a5bc
-Step 4/13 : RUN curl -O https://bootstrap.pypa.io/get-pip.py &&     python get-pip.py &&         rm get-pip.py
- ---> Using cache
- ---> 7b4350702e99
-Step 5/13 : RUN pip --no-cache-dir install      matplotlib      sklearn      pandas      ipykernel      jupyter      &&      python -m ipykernel.kernelspec
- ---> Using cache
- ---> c839fe105535
-Step 6/13 : RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl	 &&     rm -f tensorflow-1.6.0rc1-cp27-none-any.whl
- ---> Running in e803efa79d31
+ ---> ece8bde23e60
+Step 4/10 : RUN pip install --upgrade pip &&   pip --no-cache-dir install      ipykernel      jupyterlab      matplotlib      numpy      sklearn      pandas      &&      python -m ipykernel.kernelspec
+ ---> Running in 89a9355ad55f
+Collecting pip
+  Downloading pip-9.0.1-py2.py3-none-any.whl (1.3MB)
+Installing collected packages: pip
+  Found existing installation: pip 8.1.1
+    Not uninstalling pip at /usr/lib/python2.7/dist-packages, outside environment /usr
+Successfully installed pip-9.0.1
+Collecting ipykernel
+  Downloading ipykernel-4.8.2-py2-none-any.whl (108kB)
+Collecting jupyterlab
+  Downloading jupyterlab-0.31.12-py2.py3-none-any.whl (28.0MB)
+Collecting matplotlib
+  Downloading matplotlib-2.2.0.tar.gz (37.2MB)
+Requirement already satisfied: numpy in /usr/lib/python2.7/dist-packages
+Collecting sklearn
+  Downloading sklearn-0.0.tar.gz
+Collecting pandas
+  Downloading pandas-0.22.0.tar.gz (11.3MB)
+Collecting tornado>=4.0 (from ipykernel)
+  Downloading tornado-5.0.tar.gz (504kB)
+Collecting jupyter-client (from ipykernel)
+  Downloading jupyter_client-5.2.2-py2.py3-none-any.whl (88kB)
+Collecting ipython>=4.0.0 (from ipykernel)
+  Downloading ipython-5.5.0-py2-none-any.whl (758kB)
+Collecting traitlets>=4.1.0 (from ipykernel)
+  Downloading traitlets-4.3.2-py2.py3-none-any.whl (74kB)
+Collecting futures; python_version < "3.0" (from jupyterlab)
+  Downloading futures-3.2.0-py2-none-any.whl
+Collecting jupyterlab-launcher<0.11.0,>=0.10.0 (from jupyterlab)
+  Downloading jupyterlab_launcher-0.10.5-py2.py3-none-any.whl
+Collecting notebook>=4.3.1 (from jupyterlab)
+  Downloading notebook-5.4.0-py2.py3-none-any.whl (8.0MB)
+Collecting subprocess32; python_version < "3.0" (from jupyterlab)
+  Downloading subprocess32-3.2.7.tar.gz (54kB)
+Collecting ipython-genutils (from jupyterlab)
+  Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.10.0-py2.py3-none-any.whl
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+  Downloading pyparsing-2.2.0-py2.py3-none-any.whl (56kB)
+Collecting python-dateutil>=2.1 (from matplotlib)
+  Downloading python_dateutil-2.6.1-py2.py3-none-any.whl (194kB)
+Collecting pytz (from matplotlib)
+  Downloading pytz-2018.3-py2.py3-none-any.whl (509kB)
+Collecting six>=1.10 (from matplotlib)
+  Downloading six-1.11.0-py2.py3-none-any.whl
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Downloading kiwisolver-1.0.1.tar.gz
+Collecting backports.functools_lru_cache (from matplotlib)
+  Downloading backports.functools_lru_cache-1.5-py2.py3-none-any.whl
+Collecting scikit-learn (from sklearn)
+  Downloading scikit-learn-0.19.1.tar.gz (9.5MB)
+Collecting singledispatch (from tornado>=4.0->ipykernel)
+  Downloading singledispatch-3.4.0.3-py2.py3-none-any.whl
+Collecting backports_abc>=0.4 (from tornado>=4.0->ipykernel)
+  Downloading backports_abc-0.5-py2.py3-none-any.whl
+Collecting jupyter-core (from jupyter-client->ipykernel)
+  Downloading jupyter_core-4.4.0-py2.py3-none-any.whl (126kB)
+Collecting pyzmq>=13 (from jupyter-client->ipykernel)
+  Downloading pyzmq-17.0.0.tar.gz (988kB)
+Collecting simplegeneric>0.8 (from ipython>=4.0.0->ipykernel)
+  Downloading simplegeneric-0.8.1.zip
+Collecting backports.shutil-get-terminal-size; python_version == "2.7" (from ipython>=4.0.0->ipykernel)
+  Downloading backports.shutil_get_terminal_size-1.0.0-py2.py3-none-any.whl
+Requirement already satisfied: setuptools>=18.5 in /usr/lib/python2.7/dist-packages (from ipython>=4.0.0->ipykernel)
+Collecting pexpect; sys_platform != "win32" (from ipython>=4.0.0->ipykernel)
+  Downloading pexpect-4.4.0-py2.py3-none-any.whl (56kB)
+Collecting pathlib2; python_version == "2.7" or python_version == "3.3" (from ipython>=4.0.0->ipykernel)
+  Downloading pathlib2-2.3.0-py2.py3-none-any.whl
+Collecting pickleshare (from ipython>=4.0.0->ipykernel)
+  Downloading pickleshare-0.7.4-py2.py3-none-any.whl
+Requirement already satisfied: decorator in /usr/lib/python2.7/dist-packages (from ipython>=4.0.0->ipykernel)
+Collecting prompt-toolkit<2.0.0,>=1.0.4 (from ipython>=4.0.0->ipykernel)
+  Downloading prompt_toolkit-1.0.15-py2-none-any.whl (247kB)
+Collecting pygments (from ipython>=4.0.0->ipykernel)
+  Downloading Pygments-2.2.0-py2.py3-none-any.whl (841kB)
+Collecting enum34; python_version == "2.7" (from traitlets>=4.1.0->ipykernel)
+  Downloading enum34-1.1.6-py2-none-any.whl
+Collecting jsonschema>=2.6.0 (from jupyterlab-launcher<0.11.0,>=0.10.0->jupyterlab)
+  Downloading jsonschema-2.6.0-py2.py3-none-any.whl
+Collecting terminado>=0.8.1 (from notebook>=4.3.1->jupyterlab)
+  Downloading terminado-0.8.1-py2.py3-none-any.whl
+Collecting nbformat (from notebook>=4.3.1->jupyterlab)
+  Downloading nbformat-4.4.0-py2.py3-none-any.whl (155kB)
+Collecting nbconvert (from notebook>=4.3.1->jupyterlab)
+  Downloading nbconvert-5.3.1-py2.py3-none-any.whl (387kB)
+Collecting Send2Trash (from notebook>=4.3.1->jupyterlab)
+  Downloading Send2Trash-1.5.0.tar.gz
+Collecting jinja2 (from notebook>=4.3.1->jupyterlab)
+  Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
+Collecting ptyprocess>=0.5 (from pexpect; sys_platform != "win32"->ipython>=4.0.0->ipykernel)
+  Downloading ptyprocess-0.5.2-py2.py3-none-any.whl
+Collecting scandir; python_version < "3.5" (from pathlib2; python_version == "2.7" or python_version == "3.3"->ipython>=4.0.0->ipykernel)
+  Downloading scandir-1.7.tar.gz
+Collecting wcwidth (from prompt-toolkit<2.0.0,>=1.0.4->ipython>=4.0.0->ipykernel)
+  Downloading wcwidth-0.1.7-py2.py3-none-any.whl
+Collecting functools32; python_version == "2.7" (from jsonschema>=2.6.0->jupyterlab-launcher<0.11.0,>=0.10.0->jupyterlab)
+  Downloading functools32-3.2.3-2.zip
+Collecting bleach (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading bleach-2.1.3-py2.py3-none-any.whl
+Collecting mistune>=0.7.4 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading mistune-0.8.3-py2.py3-none-any.whl
+Collecting entrypoints>=0.2.2 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading entrypoints-0.2.3-py2.py3-none-any.whl
+Collecting testpath (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading testpath-0.3.1-py2.py3-none-any.whl (161kB)
+Collecting pandocfilters>=1.4.1 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading pandocfilters-1.4.2.tar.gz
+Collecting MarkupSafe>=0.23 (from jinja2->notebook>=4.3.1->jupyterlab)
+  Downloading MarkupSafe-1.0.tar.gz
+Collecting html5lib!=1.0b1,!=1.0b2,!=1.0b3,!=1.0b4,!=1.0b5,!=1.0b6,!=1.0b7,!=1.0b8,>=0.99999999pre (from bleach->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading html5lib-1.0.1-py2.py3-none-any.whl (117kB)
+Collecting configparser>=3.5; python_version == "2.7" (from entrypoints>=0.2.2->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading configparser-3.5.0.tar.gz
+Collecting webencodings (from html5lib!=1.0b1,!=1.0b2,!=1.0b3,!=1.0b4,!=1.0b5,!=1.0b6,!=1.0b7,!=1.0b8,>=0.99999999pre->bleach->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl
+Installing collected packages: futures, six, singledispatch, backports-abc, tornado, ipython-genutils, enum34, traitlets, jupyter-core, python-dateutil, pyzmq, jupyter-client, simplegeneric, backports.shutil-get-terminal-size, ptyprocess, pexpect, scandir, pathlib2, pickleshare, wcwidth, prompt-toolkit, pygments, ipython, ipykernel, terminado, functools32, jsonschema, nbformat, webencodings, html5lib, bleach, mistune, configparser, entrypoints, testpath, pandocfilters, MarkupSafe, jinja2, nbconvert, Send2Trash, notebook, jupyterlab-launcher, subprocess32, jupyterlab, cycler, pyparsing, pytz, kiwisolver, backports.functools-lru-cache, matplotlib, scikit-learn, sklearn, pandas
+  Running setup.py install for tornado: started
+    Running setup.py install for tornado: finished with status 'done'
+  Running setup.py install for pyzmq: started
+    Running setup.py install for pyzmq: finished with status 'done'
+  Running setup.py install for simplegeneric: started
+    Running setup.py install for simplegeneric: finished with status 'done'
+  Running setup.py install for scandir: started
+    Running setup.py install for scandir: finished with status 'done'
+  Running setup.py install for functools32: started
+    Running setup.py install for functools32: finished with status 'done'
+  Running setup.py install for configparser: started
+    Running setup.py install for configparser: finished with status 'done'
+  Running setup.py install for pandocfilters: started
+    Running setup.py install for pandocfilters: finished with status 'done'
+  Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+  Running setup.py install for Send2Trash: started
+    Running setup.py install for Send2Trash: finished with status 'done'
+  Running setup.py install for subprocess32: started
+    Running setup.py install for subprocess32: finished with status 'done'
+  Running setup.py install for kiwisolver: started
+    Running setup.py install for kiwisolver: finished with status 'done'
+  Running setup.py install for matplotlib: started
+    Running setup.py install for matplotlib: still running...
+    Running setup.py install for matplotlib: still running...
+    Running setup.py install for matplotlib: finished with status 'done'
+  Running setup.py install for scikit-learn: started
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: still running...
+    Running setup.py install for scikit-learn: finished with status 'done'
+  Running setup.py install for sklearn: started
+    Running setup.py install for sklearn: finished with status 'done'
+  Running setup.py install for pandas: started
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: finished with status 'done'
+Successfully installed MarkupSafe-1.0 Send2Trash-1.5.0 backports-abc-0.5 backports.functools-lru-cache-1.5 backports.shutil-get-terminal-size-1.0.0 bleach-2.1.3 configparser-3.5.0 cycler-0.10.0 entrypoints-0.2.3 enum34-1.1.6 functools32-3.2.3.post2 futures-3.2.0 html5lib-1.0.1 ipykernel-4.8.2 ipython-5.5.0 ipython-genutils-0.2.0 jinja2-2.10 jsonschema-2.6.0 jupyter-client-5.2.2 jupyter-core-4.4.0 jupyterlab-0.31.12 jupyterlab-launcher-0.10.5 kiwisolver-1.0.1 matplotlib-2.2.0 mistune-0.8.3 nbconvert-5.3.1 nbformat-4.4.0 notebook-5.4.0 pandas-0.22.0 pandocfilters-1.4.2 pathlib2-2.3.0 pexpect-4.4.0 pickleshare-0.7.4 prompt-toolkit-1.0.15 ptyprocess-0.5.2 pygments-2.2.0 pyparsing-2.2.0 python-dateutil-2.6.1 pytz-2018.3 pyzmq-17.0.0 scandir-1.7 scikit-learn-0.19.1 simplegeneric-0.8.1 singledispatch-3.4.0.3 six-1.11.0 sklearn-0.0 subprocess32-3.2.7 terminado-0.8.1 testpath-0.3.1 tornado-5.0 traitlets-4.3.2 wcwidth-0.1.7 webencodings-0.5.1
+Installed kernelspec python2 in /usr/local/share/jupyter/kernels/python2
+ ---> 12712461af8e
+Removing intermediate container 89a9355ad55f
+Step 5/10 : RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl	 &&     rm -f tensorflow-1.6.0rc1-cp27-none-any.whl
+ ---> Running in 87addf9b3e3f
 Collecting tensorflow==1.6.0rc1 from http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl
   Downloading http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl (58.5MB)
 Collecting mock>=2.0.0 (from tensorflow==1.6.0rc1)
@@ -23,18 +193,19 @@ Collecting backports.weakref>=1.0rc1 (from tensorflow==1.6.0rc1)
   Downloading backports.weakref-1.0.post1-py2.py3-none-any.whl
 Collecting astor>=0.6.0 (from tensorflow==1.6.0rc1)
   Downloading astor-0.6.2-py2.py3-none-any.whl
-Requirement already satisfied: wheel in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
+Collecting wheel (from tensorflow==1.6.0rc1)
+  Downloading wheel-0.30.0-py2.py3-none-any.whl (49kB)
 Collecting protobuf>=3.4.0 (from tensorflow==1.6.0rc1)
-  Downloading protobuf-3.5.1-py2.py3-none-any.whl (388kB)
+  Downloading protobuf-3.5.2-py2.py3-none-any.whl (388kB)
 Collecting numpy>=1.13.3 (from tensorflow==1.6.0rc1)
   Downloading numpy-1.14.1.zip (4.9MB)
 Collecting tensorboard<1.7.0,>=1.6.0 (from tensorflow==1.6.0rc1)
   Downloading tensorboard-1.6.0-py2-none-any.whl (3.0MB)
-Requirement already satisfied: six>=1.10.0 in /usr/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
+Requirement already satisfied: six>=1.10.0 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
 Collecting grpcio>=1.8.6 (from tensorflow==1.6.0rc1)
-  Downloading grpcio-1.9.1.tar.gz (10.0MB)
+  Downloading grpcio-1.10.0.tar.gz (14.0MB)
 Collecting absl-py>=0.1.6 (from tensorflow==1.6.0rc1)
-  Downloading absl-py-0.1.10.tar.gz (79kB)
+  Downloading absl-py-0.1.11.tar.gz (80kB)
 Requirement already satisfied: enum34>=1.1.6 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.6.0rc1)
 Collecting gast>=0.2.0 (from tensorflow==1.6.0rc1)
   Downloading gast-0.2.0.tar.gz
@@ -44,9 +215,8 @@ Collecting funcsigs>=1; python_version < "3.3" (from mock>=2.0.0->tensorflow==1.
   Downloading funcsigs-1.0.2-py2.py3-none-any.whl
 Collecting pbr>=0.11 (from mock>=2.0.0->tensorflow==1.6.0rc1)
   Downloading pbr-3.1.1-py2.py3-none-any.whl (99kB)
-Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.6.0rc1)
-Collecting futures>=3.1.1; python_version < "3" (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
-  Downloading futures-3.2.0-py2-none-any.whl
+Requirement already satisfied: setuptools in /usr/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.6.0rc1)
+Requirement already satisfied: futures>=3.1.1; python_version < "3" in /usr/local/lib/python2.7/dist-packages (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
 Collecting bleach==1.5.0 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
   Downloading bleach-1.5.0-py2.py3-none-any.whl
 Collecting markdown>=2.6.8 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
@@ -55,12 +225,11 @@ Collecting html5lib==0.9999999 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.
   Downloading html5lib-0.9999999.tar.gz (889kB)
 Collecting werkzeug>=0.11.10 (from tensorboard<1.7.0,>=1.6.0->tensorflow==1.6.0rc1)
   Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
-Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, protobuf, numpy, futures, html5lib, bleach, markdown, werkzeug, tensorboard, grpcio, absl-py, gast, termcolor, tensorflow
+Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, wheel, protobuf, numpy, html5lib, bleach, markdown, werkzeug, tensorboard, grpcio, absl-py, gast, termcolor, tensorflow
   Found existing installation: numpy 1.11.0
     Uninstalling numpy-1.11.0:
       Successfully uninstalled numpy-1.11.0
   Running setup.py install for numpy: started
-    Running setup.py install for numpy: still running...
     Running setup.py install for numpy: still running...
     Running setup.py install for numpy: still running...
     Running setup.py install for numpy: still running...
@@ -74,9 +243,9 @@ Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, pr
       Successfully uninstalled html5lib-1.0.1
   Running setup.py install for html5lib: started
     Running setup.py install for html5lib: finished with status 'done'
-  Found existing installation: bleach 2.1.2
-    Uninstalling bleach-2.1.2:
-      Successfully uninstalled bleach-2.1.2
+  Found existing installation: bleach 2.1.3
+    Uninstalling bleach-2.1.3:
+      Successfully uninstalled bleach-2.1.3
   Running setup.py install for grpcio: started
     Running setup.py install for grpcio: still running...
     Running setup.py install for grpcio: still running...
@@ -92,31 +261,24 @@ Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, pr
     Running setup.py install for gast: finished with status 'done'
   Running setup.py install for termcolor: started
     Running setup.py install for termcolor: finished with status 'done'
-Successfully installed absl-py-0.1.10 astor-0.6.2 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 futures-3.2.0 gast-0.2.0 grpcio-1.9.1 html5lib-0.9999999 markdown-2.6.11 mock-2.0.0 numpy-1.14.1 pbr-3.1.1 protobuf-3.5.1 tensorboard-1.6.0 tensorflow-1.6.0rc1 termcolor-1.1.0 werkzeug-0.14.1
- ---> 8cbfc4f02476
-Removing intermediate container e803efa79d31
-Step 7/13 : COPY jupyter_notebook_config.py /root/.jupyter/
- ---> 876127a5d5d9
-Removing intermediate container be2b086a01c5
-Step 8/13 : COPY notebooks /notebooks
- ---> c7f004d77a95
-Removing intermediate container b39d3cdc4cfe
-Step 9/13 : COPY run_jupyter.sh /
- ---> 69d1d35d4a1d
-Removing intermediate container 933f2063ff28
-Step 10/13 : RUN chmod +x /run_jupyter.sh
- ---> Running in 08b5759a239c
- ---> 123e89bcaf39
-Removing intermediate container 08b5759a239c
-Step 11/13 : EXPOSE 6006 8888
- ---> Running in 48d3041a6098
- ---> b6dd4eb9a3eb
-Removing intermediate container 48d3041a6098
-Step 12/13 : WORKDIR "/notebooks"
- ---> e82aae9172aa
-Removing intermediate container ea6c14068bde
-Step 13/13 : CMD /run_jupyter.sh --allow-root
- ---> Running in e1cdf7cdea10
- ---> 0d5b32000504
-Removing intermediate container e1cdf7cdea10
-Successfully built 0d5b32000504
+Successfully installed absl-py-0.1.11 astor-0.6.2 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 gast-0.2.0 grpcio-1.10.0 html5lib-0.9999999 markdown-2.6.11 mock-2.0.0 numpy-1.14.1 pbr-3.1.1 protobuf-3.5.2 tensorboard-1.6.0 tensorflow-1.6.0rc1 termcolor-1.1.0 werkzeug-0.14.1 wheel-0.30.0
+ ---> 6c7102bf8929
+Removing intermediate container 87addf9b3e3f
+Step 6/10 : COPY jupyter_notebook_config.py /root/.jupyter/
+ ---> 7ebdeac68372
+Removing intermediate container 8823db5b095d
+Step 7/10 : COPY notebooks /notebooks
+ ---> 50e81cdf7df9
+Removing intermediate container 070a114cc25d
+Step 8/10 : EXPOSE 6006 8888
+ ---> Running in 2d1c623743f7
+ ---> 4ca66a7e97d4
+Removing intermediate container 2d1c623743f7
+Step 9/10 : WORKDIR "/notebooks"
+ ---> 80707b4c6486
+Removing intermediate container 9472274215e6
+Step 10/10 : CMD jupyter lab --ip=* --no-browser --allow-root
+ ---> Running in 47998501ee69
+ ---> 0566fee7c4af
+Removing intermediate container 47998501ee69
+Successfully built 0566fee7c4af
