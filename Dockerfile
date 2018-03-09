@@ -33,8 +33,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
      && \
      python -m ipykernel.kernelspec
 
-RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0rc1-cp27-none-any.whl	 && \
-    rm -f tensorflow-1.6.0rc1-cp27-none-any.whl	
+RUN pip --no-cache-dir install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.6.0-cp27-none-any.whl && \
+    rm -f tensorflow-1.6.0-cp27-none-any.whl	
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
