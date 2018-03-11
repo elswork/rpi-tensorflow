@@ -44,6 +44,7 @@ There is very similar image based on Python 3.4 instead of 2.7 [elswork/rpi-tens
 
 ## Details
 
+- [GitHub](https://github.com/DeftWork/rpi-tensorflow)
 - [Docker Hub](https://hub.docker.com/r/elswork/rpi-tensorflow/)
 - [Deft.Work my personal blog](http://deft.work/tensorflow_for_raspberry)
 
