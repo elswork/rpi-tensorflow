@@ -7,37 +7,37 @@ There is very similar image based on Python 3.4 instead of 2.7 [elswork/rpi-tens
 
 ## Latest Changes
 
-1.6.0
+### 1.6.0
 
 - Upgraded from Tensorflow 1.6.0 rc1 to 1.6.0
 
-1.6.0 rc1
+### 1.6.0 rc1
 
 - Upgraded from Tensorflow 1.5.0 to 1.6.0rc1
 - Replace with new latest binary
 - Replaced base image with ubuntu:16.04 the same as official tensorflow container
 - Change jupyter notebook for jupyterlab
 
-1.5.0
+### 1.5.0
 
 - Upgraded from Tensorflow 1.5.0 rc1 to 1.5.0
 - Replace with new latest binary
 
-1.5.0 rc1
+### 1.5.0 rc1
 
 - Upgraded from Tensorflow 1.4.0 to 1.5.0rc1
 - Replace with new latest binary
 
-1.4.0
+### 1.4.0
 
 - Upgraded from Tensorflow 1.3.0 to 1.4.0
 - Replaced Tensorflow local binary to [tensorflow-1.4.0-cp27-none-any.whl](http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.4.0-cp27-none-any.whl)
 
-1.3.0
+### 1.3.0
 
 - Upgraded from Tensorflow 1.2.1 to 1.3.0
 
-1.2.1
+### 1.2.1
 
 - Replaced base image by a [Docker Official Image](https://github.com/docker-library/official-images)
 - Upgraded from Tensorflow 1.1.0 to 1.2.1
