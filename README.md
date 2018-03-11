@@ -63,7 +63,9 @@ docker build -t elswork/rpi-tensorflow:latest .
 Build for amd64 architecture
 
 ```sh
-docker build -t elswork/rpi-tensorflow:latest --build-arg WHL_URL=https://storage.googleapis.com/tensorflow/linux/cpu/ --build-arg WHL_FILE=tensorflow-1.6.0-cp27-none-linux_x86_64.whl .
+docker build -t elswork/rpi-tensorflow:latest \
+ --build-arg WHL_URL=https://storage.googleapis.com/tensorflow/linux/cpu/ \
+ --build-arg WHL_FILE=tensorflow-1.6.0-cp27-none-linux_x86_64.whl .
 ```
 
 ## My Real Usage Example
