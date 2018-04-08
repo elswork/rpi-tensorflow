@@ -7,6 +7,11 @@ There is very similar image based on Python 3.4 instead of 2.7 [elswork/rpi-tens
 
 ## Latest Changes
 
+### 1.7.0
+
+- Upgraded from Tensorflow 1.7.0rc1 to 1.7.0
+- Implementation of the Keras API
+
 ### 1.7.0 rc1
 
 - Upgraded from Tensorflow 1.6.0 to 1.7.0rc1
@@ -70,7 +75,7 @@ Build for amd64 architecture
 ```sh
 docker build -t elswork/rpi-tensorflow:latest \
  --build-arg WHL_URL=https://storage.googleapis.com/tensorflow/linux/cpu/ \
- --build-arg WHL_FILE=tensorflow-1.7.0rc1-cp27-none-linux_x86_64.whl .
+ --build-arg WHL_FILE=tensorflow-1.7.0-cp27-none-linux_x86_64.whl .
 ```
 
 ## My Real Usage Example
