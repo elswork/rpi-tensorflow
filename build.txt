@@ -17,95 +17,21 @@ Step 6/12 : ARG WHL_FILE=tensorflow-1.7.0-cp27-none-any.whl
  ---> Using cache
  ---> 2cbaa618c148
 Step 7/12 : RUN pip --no-cache-dir install ${WHL_URL}${WHL_FILE} &&     rm -f ${WHL_FILE}
- ---> Running in b715efaa72d7
-Collecting tensorflow==1.7.0 from http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.7.0-cp27-none-any.whl
-  Downloading http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.7.0-cp27-none-any.whl (61.5MB)
-Collecting mock>=2.0.0 (from tensorflow==1.7.0)
-  Downloading mock-2.0.0-py2.py3-none-any.whl (56kB)
-Collecting backports.weakref>=1.0rc1 (from tensorflow==1.7.0)
-  Downloading backports.weakref-1.0.post1-py2.py3-none-any.whl
-Collecting astor>=0.6.0 (from tensorflow==1.7.0)
-  Downloading astor-0.6.2-py2.py3-none-any.whl
-Collecting wheel (from tensorflow==1.7.0)
-  Downloading wheel-0.31.0-py2.py3-none-any.whl (41kB)
-Requirement already satisfied: enum34>=1.1.6 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.7.0)
-Collecting protobuf>=3.4.0 (from tensorflow==1.7.0)
-  Downloading protobuf-3.5.2.post1-py2.py3-none-any.whl (388kB)
-Collecting numpy>=1.13.3 (from tensorflow==1.7.0)
-  Downloading numpy-1.14.2.zip (4.9MB)
-Requirement already satisfied: six>=1.10.0 in /usr/local/lib/python2.7/dist-packages (from tensorflow==1.7.0)
-Collecting grpcio>=1.8.6 (from tensorflow==1.7.0)
-  Downloading grpcio-1.10.1-cp27-cp27mu-linux_armv7l.whl (6.9MB)
-Collecting absl-py>=0.1.6 (from tensorflow==1.7.0)
-  Downloading absl-py-0.1.13.tar.gz (80kB)
-Collecting tensorboard<1.8.0,>=1.7.0 (from tensorflow==1.7.0)
-  Downloading tensorboard-1.7.0-py2-none-any.whl (3.1MB)
-Collecting gast>=0.2.0 (from tensorflow==1.7.0)
-  Downloading gast-0.2.0.tar.gz
-Collecting termcolor>=1.1.0 (from tensorflow==1.7.0)
-  Downloading termcolor-1.1.0.tar.gz
-Collecting funcsigs>=1; python_version < "3.3" (from mock>=2.0.0->tensorflow==1.7.0)
-  Downloading funcsigs-1.0.2-py2.py3-none-any.whl
-Collecting pbr>=0.11 (from mock>=2.0.0->tensorflow==1.7.0)
-  Downloading pbr-4.0.1-py2.py3-none-any.whl (97kB)
-Requirement already satisfied: setuptools in /usr/lib/python2.7/dist-packages (from protobuf>=3.4.0->tensorflow==1.7.0)
-Requirement already satisfied: futures>=2.2.0 in /usr/local/lib/python2.7/dist-packages (from grpcio>=1.8.6->tensorflow==1.7.0)
-Collecting bleach==1.5.0 (from tensorboard<1.8.0,>=1.7.0->tensorflow==1.7.0)
-  Downloading bleach-1.5.0-py2.py3-none-any.whl
-Collecting markdown>=2.6.8 (from tensorboard<1.8.0,>=1.7.0->tensorflow==1.7.0)
-  Downloading Markdown-2.6.11-py2.py3-none-any.whl (78kB)
-Collecting html5lib==0.9999999 (from tensorboard<1.8.0,>=1.7.0->tensorflow==1.7.0)
-  Downloading html5lib-0.9999999.tar.gz (889kB)
-Collecting werkzeug>=0.11.10 (from tensorboard<1.8.0,>=1.7.0->tensorflow==1.7.0)
-  Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
-Installing collected packages: funcsigs, pbr, mock, backports.weakref, astor, wheel, protobuf, numpy, grpcio, absl-py, html5lib, bleach, markdown, werkzeug, tensorboard, gast, termcolor, tensorflow
-  Found existing installation: numpy 1.11.0
-    Uninstalling numpy-1.11.0:
-      Successfully uninstalled numpy-1.11.0
-  Running setup.py install for numpy: started
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: still running...
-    Running setup.py install for numpy: finished with status 'done'
-  Running setup.py install for absl-py: started
-    Running setup.py install for absl-py: finished with status 'done'
-  Found existing installation: html5lib 1.0.1
-    Uninstalling html5lib-1.0.1:
-      Successfully uninstalled html5lib-1.0.1
-  Running setup.py install for html5lib: started
-    Running setup.py install for html5lib: finished with status 'done'
-  Found existing installation: bleach 2.1.3
-    Uninstalling bleach-2.1.3:
-      Successfully uninstalled bleach-2.1.3
-  Running setup.py install for gast: started
-    Running setup.py install for gast: finished with status 'done'
-  Running setup.py install for termcolor: started
-    Running setup.py install for termcolor: finished with status 'done'
-Successfully installed absl-py-0.1.13 astor-0.6.2 backports.weakref-1.0.post1 bleach-1.5.0 funcsigs-1.0.2 gast-0.2.0 grpcio-1.10.1 html5lib-0.9999999 markdown-2.6.11 mock-2.0.0 numpy-1.14.2 pbr-4.0.1 protobuf-3.5.2.post1 tensorboard-1.7.0 tensorflow-1.7.0 termcolor-1.1.0 werkzeug-0.14.1 wheel-0.31.0
-[91mYou are using pip version 9.0.1, however version 9.0.3 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-[0m ---> 82390f0b9aa1
-Removing intermediate container b715efaa72d7
+ ---> Using cache
+ ---> 82390f0b9aa1
 Step 8/12 : COPY jupyter_notebook_config.py /root/.jupyter/
+ ---> Using cache
  ---> 39bf0129782b
-Removing intermediate container 52fa144a4154
 Step 9/12 : COPY notebooks /notebooks
+ ---> Using cache
  ---> e74601c8ff9c
-Removing intermediate container 4a0be7c09412
 Step 10/12 : EXPOSE 6006 8888
- ---> Running in 253c309e033e
+ ---> Using cache
  ---> 769c11785ba1
-Removing intermediate container 253c309e033e
 Step 11/12 : WORKDIR "/notebooks"
+ ---> Using cache
  ---> c579dbb058b5
-Removing intermediate container 791775a51460
 Step 12/12 : CMD jupyter lab --ip=* --no-browser --allow-root
- ---> Running in d8a1fe8191aa
+ ---> Using cache
  ---> 218314e3c671
-Removing intermediate container d8a1fe8191aa
 Successfully built 218314e3c671
