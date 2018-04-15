@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
- RUN pip install --upgrade pip && \
+ # RUN pip install --upgrade pip && \ # Replaced as ericflores suggested https://github.com/DeftWork/rpi-tensorflow/issues/5#issuecomment-381374497
+ RUN pip install --upgrade pip==9.0.3 && \
   pip --no-cache-dir install \
      ipykernel \
      jupyterlab \
