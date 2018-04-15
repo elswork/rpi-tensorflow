@@ -1,37 +1,1091 @@
-Sending build context to Docker daemon 181.6 MB
+Sending build context to Docker daemon 181.7 MB
 Step 1/12 : FROM ubuntu:16.04
  ---> e6bce28de62e
 Step 2/12 : LABEL mantainer "Eloy Lopez <elswork@gmail.com>"
  ---> Using cache
- ---> 5636b4e2e089
-Step 3/12 : RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     curl     libfreetype6-dev     libpng12-dev     libzmq3-dev     pkg-config     python     python-dev     python-pip     python-setuptools     python-scipy     rsync     software-properties-common     unzip     git     &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+ ---> cc26d032dfb1
+Step 3/12 : RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     curl     libfreetype6-dev     libpng12-dev     libzmq3-dev     pkg-config     python     python-dev     python-pip     python-setuptools     rsync     software-properties-common     unzip     git &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
  ---> Using cache
- ---> ece8bde23e60
-Step 4/12 : RUN pip install --upgrade pip &&   pip --no-cache-dir install      ipykernel      jupyterlab      matplotlib      numpy      sklearn      pandas      &&      python -m ipykernel.kernelspec
- ---> Using cache
- ---> 12712461af8e
-Step 5/12 : ARG WHL_URL=http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/
- ---> Using cache
- ---> 87ef67b92650
-Step 6/12 : ARG WHL_FILE=tensorflow-1.7.0-cp27-none-any.whl
- ---> Using cache
- ---> 2cbaa618c148
-Step 7/12 : RUN pip --no-cache-dir install ${WHL_URL}${WHL_FILE} &&     rm -f ${WHL_FILE}
- ---> Using cache
- ---> 82390f0b9aa1
-Step 8/12 : COPY jupyter_notebook_config.py /root/.jupyter/
- ---> Using cache
- ---> 39bf0129782b
-Step 9/12 : COPY notebooks /notebooks
- ---> Using cache
- ---> e74601c8ff9c
-Step 10/12 : EXPOSE 6006 8888
- ---> Using cache
- ---> 769c11785ba1
-Step 11/12 : WORKDIR "/notebooks"
- ---> Using cache
- ---> c579dbb058b5
-Step 12/12 : CMD jupyter lab --ip=* --no-browser --allow-root
- ---> Using cache
- ---> 218314e3c671
-Successfully built 218314e3c671
+ ---> 52b86e8be342
+Step 4/12 : RUN pip install --upgrade pip &&   pip --no-cache-dir install      numpy      matplotlib      ipykernel      jupyterlab      pandas      &&      python -m ipykernel.kernelspec
+ ---> Running in 368f359b00c8
+Collecting pip
+  Downloading pip-9.0.3-py2.py3-none-any.whl (1.4MB)
+Installing collected packages: pip
+  Found existing installation: pip 8.1.1
+    Not uninstalling pip at /usr/lib/python2.7/dist-packages, outside environment /usr
+Successfully installed pip-9.0.3
+Collecting numpy
+  Downloading numpy-1.14.2.zip (4.9MB)
+Collecting matplotlib
+  Downloading matplotlib-2.2.2.tar.gz (37.3MB)
+Collecting ipykernel
+  Downloading ipykernel-4.8.2-py2-none-any.whl (108kB)
+Collecting jupyterlab
+  Downloading jupyterlab-0.31.12-py2.py3-none-any.whl (28.0MB)
+Collecting pandas
+  Downloading pandas-0.22.0.tar.gz (11.3MB)
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.10.0-py2.py3-none-any.whl
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+  Downloading pyparsing-2.2.0-py2.py3-none-any.whl (56kB)
+Collecting python-dateutil>=2.1 (from matplotlib)
+  Downloading python_dateutil-2.7.2-py2.py3-none-any.whl (212kB)
+Collecting pytz (from matplotlib)
+  Downloading pytz-2018.4-py2.py3-none-any.whl (510kB)
+Collecting six>=1.10 (from matplotlib)
+  Downloading six-1.11.0-py2.py3-none-any.whl
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Downloading kiwisolver-1.0.1.tar.gz
+Collecting backports.functools_lru_cache (from matplotlib)
+  Downloading backports.functools_lru_cache-1.5-py2.py3-none-any.whl
+Collecting subprocess32 (from matplotlib)
+  Downloading subprocess32-3.2.7.tar.gz (54kB)
+Collecting tornado>=4.0 (from ipykernel)
+  Downloading tornado-5.0.2.tar.gz (506kB)
+Collecting jupyter-client (from ipykernel)
+  Downloading jupyter_client-5.2.3-py2.py3-none-any.whl (89kB)
+Collecting ipython>=4.0.0 (from ipykernel)
+  Downloading ipython-5.6.0-py2-none-any.whl (760kB)
+Collecting traitlets>=4.1.0 (from ipykernel)
+  Downloading traitlets-4.3.2-py2.py3-none-any.whl (74kB)
+Collecting futures; python_version < "3.0" (from jupyterlab)
+  Downloading futures-3.2.0-py2-none-any.whl
+Collecting jupyterlab-launcher<0.11.0,>=0.10.0 (from jupyterlab)
+  Downloading jupyterlab_launcher-0.10.5-py2.py3-none-any.whl
+Collecting notebook>=4.3.1 (from jupyterlab)
+  Downloading notebook-5.4.1-py2.py3-none-any.whl (8.0MB)
+Collecting ipython-genutils (from jupyterlab)
+  Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl
+Requirement already satisfied: setuptools in /usr/lib/python2.7/dist-packages (from kiwisolver>=1.0.1->matplotlib)
+Collecting singledispatch (from tornado>=4.0->ipykernel)
+  Downloading singledispatch-3.4.0.3-py2.py3-none-any.whl
+Collecting backports_abc>=0.4 (from tornado>=4.0->ipykernel)
+  Downloading backports_abc-0.5-py2.py3-none-any.whl
+Collecting jupyter-core (from jupyter-client->ipykernel)
+  Downloading jupyter_core-4.4.0-py2.py3-none-any.whl (126kB)
+Collecting pyzmq>=13 (from jupyter-client->ipykernel)
+  Downloading pyzmq-17.0.0.tar.gz (988kB)
+Collecting simplegeneric>0.8 (from ipython>=4.0.0->ipykernel)
+  Downloading simplegeneric-0.8.1.zip
+Collecting backports.shutil-get-terminal-size; python_version == "2.7" (from ipython>=4.0.0->ipykernel)
+  Downloading backports.shutil_get_terminal_size-1.0.0-py2.py3-none-any.whl
+Collecting pexpect; sys_platform != "win32" (from ipython>=4.0.0->ipykernel)
+  Downloading pexpect-4.4.0-py2.py3-none-any.whl (56kB)
+Collecting pathlib2; python_version == "2.7" or python_version == "3.3" (from ipython>=4.0.0->ipykernel)
+  Downloading pathlib2-2.3.0-py2.py3-none-any.whl
+Collecting pickleshare (from ipython>=4.0.0->ipykernel)
+  Downloading pickleshare-0.7.4-py2.py3-none-any.whl
+Collecting decorator (from ipython>=4.0.0->ipykernel)
+  Downloading decorator-4.2.1-py2.py3-none-any.whl
+Collecting prompt-toolkit<2.0.0,>=1.0.4 (from ipython>=4.0.0->ipykernel)
+  Downloading prompt_toolkit-1.0.15-py2-none-any.whl (247kB)
+Collecting pygments (from ipython>=4.0.0->ipykernel)
+  Downloading Pygments-2.2.0-py2.py3-none-any.whl (841kB)
+Collecting enum34; python_version == "2.7" (from traitlets>=4.1.0->ipykernel)
+  Downloading enum34-1.1.6-py2-none-any.whl
+Collecting jsonschema>=2.6.0 (from jupyterlab-launcher<0.11.0,>=0.10.0->jupyterlab)
+  Downloading jsonschema-2.6.0-py2.py3-none-any.whl
+Collecting terminado>=0.8.1 (from notebook>=4.3.1->jupyterlab)
+  Downloading terminado-0.8.1-py2.py3-none-any.whl
+Collecting nbformat (from notebook>=4.3.1->jupyterlab)
+  Downloading nbformat-4.4.0-py2.py3-none-any.whl (155kB)
+Collecting nbconvert (from notebook>=4.3.1->jupyterlab)
+  Downloading nbconvert-5.3.1-py2.py3-none-any.whl (387kB)
+Collecting Send2Trash (from notebook>=4.3.1->jupyterlab)
+  Downloading Send2Trash-1.5.0.tar.gz
+Collecting jinja2 (from notebook>=4.3.1->jupyterlab)
+  Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
+Collecting ptyprocess>=0.5 (from pexpect; sys_platform != "win32"->ipython>=4.0.0->ipykernel)
+  Downloading ptyprocess-0.5.2-py2.py3-none-any.whl
+Collecting scandir; python_version < "3.5" (from pathlib2; python_version == "2.7" or python_version == "3.3"->ipython>=4.0.0->ipykernel)
+  Downloading scandir-1.7.tar.gz
+Collecting wcwidth (from prompt-toolkit<2.0.0,>=1.0.4->ipython>=4.0.0->ipykernel)
+  Downloading wcwidth-0.1.7-py2.py3-none-any.whl
+Collecting functools32; python_version == "2.7" (from jsonschema>=2.6.0->jupyterlab-launcher<0.11.0,>=0.10.0->jupyterlab)
+  Downloading functools32-3.2.3-2.tar.gz
+Collecting bleach (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading bleach-2.1.3-py2.py3-none-any.whl
+Collecting mistune>=0.7.4 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading mistune-0.8.3-py2.py3-none-any.whl
+Collecting entrypoints>=0.2.2 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading entrypoints-0.2.3-py2.py3-none-any.whl
+Collecting testpath (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading testpath-0.3.1-py2.py3-none-any.whl (161kB)
+Collecting pandocfilters>=1.4.1 (from nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading pandocfilters-1.4.2.tar.gz
+Collecting MarkupSafe>=0.23 (from jinja2->notebook>=4.3.1->jupyterlab)
+  Downloading MarkupSafe-1.0.tar.gz
+Collecting html5lib!=1.0b1,!=1.0b2,!=1.0b3,!=1.0b4,!=1.0b5,!=1.0b6,!=1.0b7,!=1.0b8,>=0.99999999pre (from bleach->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading html5lib-1.0.1-py2.py3-none-any.whl (117kB)
+Collecting configparser>=3.5; python_version == "2.7" (from entrypoints>=0.2.2->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading configparser-3.5.0.tar.gz
+Collecting webencodings (from html5lib!=1.0b1,!=1.0b2,!=1.0b3,!=1.0b4,!=1.0b5,!=1.0b6,!=1.0b7,!=1.0b8,>=0.99999999pre->bleach->nbconvert->notebook>=4.3.1->jupyterlab)
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl
+Installing collected packages: numpy, six, cycler, pyparsing, python-dateutil, pytz, kiwisolver, backports.functools-lru-cache, subprocess32, matplotlib, futures, singledispatch, backports-abc, tornado, decorator, ipython-genutils, enum34, traitlets, jupyter-core, pyzmq, jupyter-client, simplegeneric, backports.shutil-get-terminal-size, ptyprocess, pexpect, scandir, pathlib2, pickleshare, wcwidth, prompt-toolkit, pygments, ipython, ipykernel, terminado, functools32, jsonschema, nbformat, webencodings, html5lib, bleach, mistune, configparser, entrypoints, testpath, pandocfilters, MarkupSafe, jinja2, nbconvert, Send2Trash, notebook, jupyterlab-launcher, jupyterlab, pandas
+  Running setup.py install for numpy: started
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: still running...
+    Running setup.py install for numpy: finished with status 'done'
+  Running setup.py install for kiwisolver: started
+    Running setup.py install for kiwisolver: finished with status 'done'
+  Running setup.py install for subprocess32: started
+    Running setup.py install for subprocess32: finished with status 'done'
+  Running setup.py install for matplotlib: started
+    Running setup.py install for matplotlib: still running...
+    Running setup.py install for matplotlib: still running...
+    Running setup.py install for matplotlib: finished with status 'done'
+  Running setup.py install for tornado: started
+    Running setup.py install for tornado: finished with status 'done'
+  Running setup.py install for pyzmq: started
+    Running setup.py install for pyzmq: finished with status 'done'
+  Running setup.py install for simplegeneric: started
+    Running setup.py install for simplegeneric: finished with status 'done'
+  Running setup.py install for scandir: started
+    Running setup.py install for scandir: finished with status 'done'
+  Running setup.py install for functools32: started
+    Running setup.py install for functools32: finished with status 'done'
+  Running setup.py install for configparser: started
+    Running setup.py install for configparser: finished with status 'done'
+  Running setup.py install for pandocfilters: started
+    Running setup.py install for pandocfilters: finished with status 'done'
+  Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+  Running setup.py install for Send2Trash: started
+    Running setup.py install for Send2Trash: finished with status 'done'
+  Running setup.py install for pandas: started
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: still running...
+    Running setup.py install for pandas: finished with status 'error'
+    Complete output from command /usr/bin/python -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-KNsMnE/pandas/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-thhSEY-record/install-record.txt --single-version-externally-managed --compile:
+    running install
+    running build
+    running build_py
+    creating build
+    creating build/lib.linux-armv7l-2.7
+    creating build/lib.linux-armv7l-2.7/pandas
+    copying pandas/conftest.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/testing.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/__init__.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/parser.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/json.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/lib.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/_version.py -> build/lib.linux-armv7l-2.7/pandas
+    copying pandas/tslib.py -> build/lib.linux-armv7l-2.7/pandas
+    creating build/lib.linux-armv7l-2.7/pandas/api
+    copying pandas/api/__init__.py -> build/lib.linux-armv7l-2.7/pandas/api
+    creating build/lib.linux-armv7l-2.7/pandas/api/types
+    copying pandas/api/types/__init__.py -> build/lib.linux-armv7l-2.7/pandas/api/types
+    creating build/lib.linux-armv7l-2.7/pandas/compat
+    copying pandas/compat/__init__.py -> build/lib.linux-armv7l-2.7/pandas/compat
+    copying pandas/compat/openpyxl_compat.py -> build/lib.linux-armv7l-2.7/pandas/compat
+    copying pandas/compat/chainmap.py -> build/lib.linux-armv7l-2.7/pandas/compat
+    copying pandas/compat/chainmap_impl.py -> build/lib.linux-armv7l-2.7/pandas/compat
+    copying pandas/compat/pickle_compat.py -> build/lib.linux-armv7l-2.7/pandas/compat
+    creating build/lib.linux-armv7l-2.7/pandas/compat/numpy
+    copying pandas/compat/numpy/__init__.py -> build/lib.linux-armv7l-2.7/pandas/compat/numpy
+    copying pandas/compat/numpy/function.py -> build/lib.linux-armv7l-2.7/pandas/compat/numpy
+    creating build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/panel.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/algorithms.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/common.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/frame.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/config.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/datetools.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/internals.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/missing.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/resample.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/sorting.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/strings.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/panelnd.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/accessor.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/series.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/index.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/ops.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/generic.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/window.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/indexing.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/panel4d.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/config_init.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/api.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/groupby.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/categorical.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/base.py -> build/lib.linux-armv7l-2.7/pandas/core
+    copying pandas/core/nanops.py -> build/lib.linux-armv7l-2.7/pandas/core
+    creating build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/cast.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/common.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/inference.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/missing.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/dtypes.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/concat.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/generic.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    copying pandas/core/dtypes/api.py -> build/lib.linux-armv7l-2.7/pandas/core/dtypes
+    creating build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/interval.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/multi.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/numeric.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/frozen.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/timedeltas.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/datetimelike.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/range.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/datetimes.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/period.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/category.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/api.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/base.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    copying pandas/core/indexes/accessors.py -> build/lib.linux-armv7l-2.7/pandas/core/indexes
+    creating build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/common.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/eval.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/scope.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/check.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/pytables.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/expr.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/expressions.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/align.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/ops.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/engines.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    copying pandas/core/computation/api.py -> build/lib.linux-armv7l-2.7/pandas/core/computation
+    creating build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/reshape.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/concat.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/tile.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/util.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/merge.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/api.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    copying pandas/core/reshape/pivot.py -> build/lib.linux-armv7l-2.7/pandas/core/reshape
+    creating build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/array.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/frame.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/scipy_sparse.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/list.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/series.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    copying pandas/core/sparse/api.py -> build/lib.linux-armv7l-2.7/pandas/core/sparse
+    creating build/lib.linux-armv7l-2.7/pandas/core/tools
+    copying pandas/core/tools/numeric.py -> build/lib.linux-armv7l-2.7/pandas/core/tools
+    copying pandas/core/tools/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/tools
+    copying pandas/core/tools/timedeltas.py -> build/lib.linux-armv7l-2.7/pandas/core/tools
+    copying pandas/core/tools/datetimes.py -> build/lib.linux-armv7l-2.7/pandas/core/tools
+    creating build/lib.linux-armv7l-2.7/pandas/core/util
+    copying pandas/core/util/__init__.py -> build/lib.linux-armv7l-2.7/pandas/core/util
+    copying pandas/core/util/hashing.py -> build/lib.linux-armv7l-2.7/pandas/core/util
+    creating build/lib.linux-armv7l-2.7/pandas/computation
+    copying pandas/computation/__init__.py -> build/lib.linux-armv7l-2.7/pandas/computation
+    copying pandas/computation/expressions.py -> build/lib.linux-armv7l-2.7/pandas/computation
+    creating build/lib.linux-armv7l-2.7/pandas/errors
+    copying pandas/errors/__init__.py -> build/lib.linux-armv7l-2.7/pandas/errors
+    creating build/lib.linux-armv7l-2.7/pandas/formats
+    copying pandas/formats/__init__.py -> build/lib.linux-armv7l-2.7/pandas/formats
+    copying pandas/formats/style.py -> build/lib.linux-armv7l-2.7/pandas/formats
+    creating build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/pickle.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/feather_format.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/common.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/data.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/stata.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/excel.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/packers.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/pytables.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/wb.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/date_converters.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/gbq.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/s3.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/parsers.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/sql.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/html.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/clipboards.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/parquet.py -> build/lib.linux-armv7l-2.7/pandas/io
+    copying pandas/io/api.py -> build/lib.linux-armv7l-2.7/pandas/io
+    creating build/lib.linux-armv7l-2.7/pandas/io/json
+    copying pandas/io/json/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io/json
+    copying pandas/io/json/json.py -> build/lib.linux-armv7l-2.7/pandas/io/json
+    copying pandas/io/json/table_schema.py -> build/lib.linux-armv7l-2.7/pandas/io/json
+    copying pandas/io/json/normalize.py -> build/lib.linux-armv7l-2.7/pandas/io/json
+    creating build/lib.linux-armv7l-2.7/pandas/io/sas
+    copying pandas/io/sas/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io/sas
+    copying pandas/io/sas/sas7bdat.py -> build/lib.linux-armv7l-2.7/pandas/io/sas
+    copying pandas/io/sas/sasreader.py -> build/lib.linux-armv7l-2.7/pandas/io/sas
+    copying pandas/io/sas/sas_constants.py -> build/lib.linux-armv7l-2.7/pandas/io/sas
+    copying pandas/io/sas/sas_xport.py -> build/lib.linux-armv7l-2.7/pandas/io/sas
+    creating build/lib.linux-armv7l-2.7/pandas/io/msgpack
+    copying pandas/io/msgpack/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io/msgpack
+    copying pandas/io/msgpack/exceptions.py -> build/lib.linux-armv7l-2.7/pandas/io/msgpack
+    copying pandas/io/msgpack/_version.py -> build/lib.linux-armv7l-2.7/pandas/io/msgpack
+    creating build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/css.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/common.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/console.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/excel.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/format.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/printing.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/style.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    copying pandas/io/formats/terminal.py -> build/lib.linux-armv7l-2.7/pandas/io/formats
+    creating build/lib.linux-armv7l-2.7/pandas/io/clipboard
+    copying pandas/io/clipboard/__init__.py -> build/lib.linux-armv7l-2.7/pandas/io/clipboard
+    copying pandas/io/clipboard/exceptions.py -> build/lib.linux-armv7l-2.7/pandas/io/clipboard
+    copying pandas/io/clipboard/windows.py -> build/lib.linux-armv7l-2.7/pandas/io/clipboard
+    copying pandas/io/clipboard/clipboards.py -> build/lib.linux-armv7l-2.7/pandas/io/clipboard
+    creating build/lib.linux-armv7l-2.7/pandas/_libs
+    copying pandas/_libs/__init__.py -> build/lib.linux-armv7l-2.7/pandas/_libs
+    creating build/lib.linux-armv7l-2.7/pandas/_libs/tslibs
+    copying pandas/_libs/tslibs/__init__.py -> build/lib.linux-armv7l-2.7/pandas/_libs/tslibs
+    creating build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_timeseries.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_core.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_style.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/__init__.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_compat.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_misc.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_converter.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    copying pandas/plotting/_tools.py -> build/lib.linux-armv7l-2.7/pandas/plotting
+    creating build/lib.linux-armv7l-2.7/pandas/stats
+    copying pandas/stats/__init__.py -> build/lib.linux-armv7l-2.7/pandas/stats
+    copying pandas/stats/moments.py -> build/lib.linux-armv7l-2.7/pandas/stats
+    copying pandas/stats/api.py -> build/lib.linux-armv7l-2.7/pandas/stats
+    creating build/lib.linux-armv7l-2.7/pandas/types
+    copying pandas/types/common.py -> build/lib.linux-armv7l-2.7/pandas/types
+    copying pandas/types/__init__.py -> build/lib.linux-armv7l-2.7/pandas/types
+    copying pandas/types/concat.py -> build/lib.linux-armv7l-2.7/pandas/types
+    creating build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_tester.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/testing.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/__init__.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_depr_module.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_print_versions.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/decorators.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/hashing.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_doctools.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_validators.py -> build/lib.linux-armv7l-2.7/pandas/util
+    copying pandas/util/_decorators.py -> build/lib.linux-armv7l-2.7/pandas/util
+    creating build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_compat.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_strings.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_lib.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_categorical.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_expressions.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_algos.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_join.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_base.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_errors.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_common.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_config.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_panel.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_downstream.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_nanops.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_panel4d.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_resample.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_panelnd.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_multilevel.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_take.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_window.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    copying pandas/tests/test_sorting.py -> build/lib.linux-armv7l-2.7/pandas/tests
+    creating build/lib.linux-armv7l-2.7/pandas/tests/api
+    copying pandas/tests/api/test_types.py -> build/lib.linux-armv7l-2.7/pandas/tests/api
+    copying pandas/tests/api/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/api
+    copying pandas/tests/api/test_api.py -> build/lib.linux-armv7l-2.7/pandas/tests/api
+    creating build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_missing.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_concat.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_inference.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_common.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_generic.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_dtypes.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_cast.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    copying pandas/tests/dtypes/test_io.py -> build/lib.linux-armv7l-2.7/pandas/tests/dtypes
+    creating build/lib.linux-armv7l-2.7/pandas/tests/computation
+    copying pandas/tests/computation/test_compat.py -> build/lib.linux-armv7l-2.7/pandas/tests/computation
+    copying pandas/tests/computation/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/computation
+    copying pandas/tests/computation/test_eval.py -> build/lib.linux-armv7l-2.7/pandas/tests/computation
+    creating build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_libsparse.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_series.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_array.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_frame.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_format.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_combine_concat.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_pivot.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_arithmetics.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_groupby.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_list.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    copying pandas/tests/sparse/test_reshape.py -> build/lib.linux-armv7l-2.7/pandas/tests/sparse
+    creating build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_mutate_columns.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_operators.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_missing.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_to_csv.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_join.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_replace.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_apply.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_quantile.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_block_internals.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_convert_to.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_analytics.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_rank.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_axis_select_reindex.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_period.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_validate.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_dtypes.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_subclass.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_combine_concat.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_repr_info.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_nonunique_indexes.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_alter_axes.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_constructors.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_api.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_asof.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_timeseries.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_sorting.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_reshape.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    copying pandas/tests/frame/test_query_eval.py -> build/lib.linux-armv7l-2.7/pandas/tests/frame
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_ix.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_categorical.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_chaining_and_caching.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_interval.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_floats.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_loc.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_timedelta.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_panel.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_scalar.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_datetime.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_indexing_slow.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_multiindex.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_callable.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_partial.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_iloc.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    copying pandas/tests/indexing/test_coercion.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexing
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/conftest.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_numeric.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_interval.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_multi.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_category.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_base.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/datetimelike.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_frozen.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    copying pandas/tests/indexes/test_range.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_missing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_datetimelike.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_partial_slicing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_astype.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_date_range.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_formats.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_setops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_datetime.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_construction.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_ops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_tools.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    copying pandas/tests/indexes/datetimes/test_misc.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/datetimes
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_partial_slicing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_astype.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_timedelta.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_setops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_construction.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_timedelta_range.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_ops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    copying pandas/tests/indexes/timedeltas/test_tools.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/timedeltas
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_partial_slicing.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_asfreq.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_formats.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_setops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_period.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_construction.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_ops.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_tools.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    copying pandas/tests/indexes/period/test_period_range.py -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/period
+    creating build/lib.linux-armv7l-2.7/pandas/tests/internals
+    copying pandas/tests/internals/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/internals
+    copying pandas/tests/internals/test_external_block.py -> build/lib.linux-armv7l-2.7/pandas/tests/internals
+    copying pandas/tests/internals/test_internals.py -> build/lib.linux-armv7l-2.7/pandas/tests/internals
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/conftest.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_html.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_pytables.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_sql.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_stata.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_common.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_clipboard.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_parquet.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_packers.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_pickle.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/generate_legacy_storage_files.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_excel.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_feather.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_gbq.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    copying pandas/tests/io/test_s3.py -> build/lib.linux-armv7l-2.7/pandas/tests/io
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_compression.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_readlines.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_ujson.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_pandas.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_json_table_schema.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    copying pandas/tests/io/json/test_normalize.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/json
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/test_parsers.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/multithread.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/python_parser_only.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/c_parser_only.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/na_values.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/index_col.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/test_network.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/mangle_dupes.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/test_unsupported.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/converters.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/dtypes.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/dialect.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/skiprows.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/quoting.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/usecols.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/test_textreader.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/parse_dates.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/header.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/compression.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/comment.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    copying pandas/tests/io/parser/test_read_fwf.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/sas
+    copying pandas/tests/io/sas/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas
+    copying pandas/tests/io/sas/test_xport.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas
+    copying pandas/tests/io/sas/test_sas.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas
+    copying pandas/tests/io/sas/test_sas7bdat.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_unpack.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_extension.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_read_size.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_pack.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_limits.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_subtype.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_seq.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_except.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_case.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_obj.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_newspec.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_buffer.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_format.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_unpack_raw.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    copying pandas/tests/io/msgpack/test_sequnpack.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_to_excel.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_to_csv.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_eng_formatting.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_style.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_format.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_to_latex.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_css.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_to_html.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    copying pandas/tests/io/formats/test_printing.py -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats
+    creating build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_aggregate.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_whitelist.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_categorical.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_index_as_string.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_timegrouper.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_nth.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_bin_groupby.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_filters.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_counting.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_groupby.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_transform.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    copying pandas/tests/groupby/test_value_counts.py -> build/lib.linux-armv7l-2.7/pandas/tests/groupby
+    creating build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_merge_ordered.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_join.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_concat.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_merge_asof.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_tile.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_pivot.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_union_categoricals.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_merge.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_util.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    copying pandas/tests/reshape/test_reshape.py -> build/lib.linux-armv7l-2.7/pandas/tests/reshape
+    creating build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_operators.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_missing.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_replace.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_indexing.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_apply.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_quantile.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_analytics.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_rank.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_period.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_validate.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_dtypes.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_subclass.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_combine_concat.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_internals.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_repr.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_datetime_values.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_alter_axes.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_constructors.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_api.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_io.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_asof.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_timeseries.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    copying pandas/tests/series/test_sorting.py -> build/lib.linux-armv7l-2.7/pandas/tests/series
+    creating build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_interval.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_timedelta.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_nat.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_period.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_timestamp.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    copying pandas/tests/scalar/test_period_asfreq.py -> build/lib.linux-armv7l-2.7/pandas/tests/scalar
+    creating build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/conftest.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/test_offsets.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/test_timezones.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/test_frequencies.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    copying pandas/tests/tseries/test_holiday.py -> build/lib.linux-armv7l-2.7/pandas/tests/tseries
+    creating build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_hist_method.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/common.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_series.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_datetimelike.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_deprecated.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_frame.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_boxplot_method.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_groupby.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_converter.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    copying pandas/tests/plotting/test_misc.py -> build/lib.linux-armv7l-2.7/pandas/tests/plotting
+    creating build/lib.linux-armv7l-2.7/pandas/tests/tools
+    copying pandas/tests/tools/test_numeric.py -> build/lib.linux-armv7l-2.7/pandas/tests/tools
+    copying pandas/tests/tools/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/tools
+    creating build/lib.linux-armv7l-2.7/pandas/tests/util
+    copying pandas/tests/util/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tests/util
+    copying pandas/tests/util/test_hashing.py -> build/lib.linux-armv7l-2.7/pandas/tests/util
+    copying pandas/tests/util/test_testing.py -> build/lib.linux-armv7l-2.7/pandas/tests/util
+    copying pandas/tests/util/test_util.py -> build/lib.linux-armv7l-2.7/pandas/tests/util
+    creating build/lib.linux-armv7l-2.7/pandas/tools
+    copying pandas/tools/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tools
+    copying pandas/tools/plotting.py -> build/lib.linux-armv7l-2.7/pandas/tools
+    copying pandas/tools/hashing.py -> build/lib.linux-armv7l-2.7/pandas/tools
+    copying pandas/tools/merge.py -> build/lib.linux-armv7l-2.7/pandas/tools
+    creating build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/__init__.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/offsets.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/plotting.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/util.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/frequencies.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/converter.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/holiday.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    copying pandas/tseries/api.py -> build/lib.linux-armv7l-2.7/pandas/tseries
+    creating build/lib.linux-armv7l-2.7/pandas/io/formats/templates
+    copying pandas/io/formats/templates/html.tpl -> build/lib.linux-armv7l-2.7/pandas/io/formats/templates
+    creating build/lib.linux-armv7l-2.7/pandas/tests/data
+    copying pandas/tests/data/iris.csv -> build/lib.linux-armv7l-2.7/pandas/tests/data
+    copying pandas/tests/data/tips.csv -> build/lib.linux-armv7l-2.7/pandas/tests/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/indexes/data
+    copying pandas/tests/indexes/data/mindex_073.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/data
+    copying pandas/tests/indexes/data/multiindex_v1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/indexes/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    copying pandas/tests/io/data/legacy_hdf/legacy_table.h5 -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    copying pandas/tests/io/data/legacy_hdf/pytables_native.h5 -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    copying pandas/tests/io/data/legacy_hdf/periodindex_0.20.1_x86_64_darwin_2.7.13.h5 -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    copying pandas/tests/io/data/legacy_hdf/datetimetz_object.h5 -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    copying pandas/tests/io/data/legacy_hdf/pytables_native2.h5 -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_hdf
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_x86_64_linux_3.4.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_x86_64_linux_2.7.10.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_x86_64_darwin_3.4.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_x86_64_darwin_2.7.9.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_AMD64_windows_3.4.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_x86_64_darwin_2.7.10.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    copying pandas/tests/io/data/legacy_pickle/0.16.2/0.16.2_AMD64_windows_2.7.10.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.2
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.0
+    copying pandas/tests/io/data/legacy_pickle/0.16.0/0.16.0_x86_64_darwin_2.7.9.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.16.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.1
+    copying pandas/tests/io/data/legacy_pickle/0.18.1/0.18.1_x86_64_darwin_2.7.12.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.1
+    copying pandas/tests/io/data/legacy_pickle/0.18.1/0.18.1_x86_64_darwin_3.5.2.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.1
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.12.0
+    copying pandas/tests/io/data/legacy_pickle/0.12.0/0.12.0_x86_64_linux_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.12.0
+    copying pandas/tests/io/data/legacy_pickle/0.12.0/0.12.0_AMD64_windows_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.12.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_x86_64_darwin_2.7.6.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_i686_linux_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_x86_64_linux_3.3.0.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_x86_64_darwin_2.7.5.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_x86_64_linux_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_i686_linux_3.2.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_x86_64_linux_2.7.8.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_i686_linux_2.6.5.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    copying pandas/tests/io/data/legacy_pickle/0.13.0/0.13.0_AMD64_windows_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.13.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.1
+    copying pandas/tests/io/data/legacy_pickle/0.14.1/0.14.1_x86_64_darwin_2.7.12.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.1
+    copying pandas/tests/io/data/legacy_pickle/0.14.1/0.14.1_x86_64_linux_2.7.8.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.1
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.20.3
+    copying pandas/tests/io/data/legacy_pickle/0.20.3/0.20.3_x86_64_darwin_2.7.14.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.20.3
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.10.1
+    copying pandas/tests/io/data/legacy_pickle/0.10.1/AMD64_windows_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.10.1
+    copying pandas/tests/io/data/legacy_pickle/0.10.1/x86_64_linux_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.10.1
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.11.0
+    copying pandas/tests/io/data/legacy_pickle/0.11.0/0.11.0_x86_64_linux_3.3.0.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.11.0
+    copying pandas/tests/io/data/legacy_pickle/0.11.0/x86_64_linux_3.3.0.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.11.0
+    copying pandas/tests/io/data/legacy_pickle/0.11.0/x86_64_linux_2.7.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.11.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.19.2
+    copying pandas/tests/io/data/legacy_pickle/0.19.2/0.19.2_x86_64_darwin_3.6.1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.19.2
+    copying pandas/tests/io/data/legacy_pickle/0.19.2/0.19.2_x86_64_darwin_2.7.12.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.19.2
+    copying pandas/tests/io/data/legacy_pickle/0.19.2/0.19.2_x86_64_darwin_2.7.14.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.19.2
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.0
+    copying pandas/tests/io/data/legacy_pickle/0.18.0/0.18.0_AMD64_windows_3.5.1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.0
+    copying pandas/tests/io/data/legacy_pickle/0.18.0/0.18.0_AMD64_windows_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.0
+    copying pandas/tests/io/data/legacy_pickle/0.18.0/0.18.0_x86_64_darwin_3.5.1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.0
+    copying pandas/tests/io/data/legacy_pickle/0.18.0/0.18.0_x86_64_darwin_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.18.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.0
+    copying pandas/tests/io/data/legacy_pickle/0.14.0/0.14.0_x86_64_darwin_2.7.6.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.0
+    copying pandas/tests/io/data/legacy_pickle/0.14.0/0.14.0_x86_64_linux_2.7.8.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.14.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_x86_64_darwin_3.5.3.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_x86_64_darwin_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.1_AMD64_windows_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_AMD64_windows_3.4.4.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_x86_64_darwin_3.4.4.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_x86_64_linux_3.4.4.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_AMD64_windows_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    copying pandas/tests/io/data/legacy_pickle/0.17.0/0.17.0_x86_64_linux_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.15.0
+    copying pandas/tests/io/data/legacy_pickle/0.15.0/0.15.0_x86_64_linux_2.7.8.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.15.0
+    copying pandas/tests/io/data/legacy_pickle/0.15.0/0.15.0_x86_64_darwin_2.7.12.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.15.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.15.2
+    copying pandas/tests/io/data/legacy_pickle/0.15.2/0.15.2_x86_64_darwin_2.7.9.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.15.2
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.1
+    copying pandas/tests/io/data/legacy_pickle/0.17.1/0.17.1_x86_64_darwin_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.1
+    copying pandas/tests/io/data/legacy_pickle/0.17.1/0.17.1_AMD64_windows_2.7.11.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_pickle/0.17.1
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_x86_64_darwin_3.4.3.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_AMD64_windows_3.4.3.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_AMD64_windows_2.7.10.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_x86_64_linux_3.4.3.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_x86_64_darwin_2.7.9.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_x86_64_linux_2.7.10.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    copying pandas/tests/io/data/legacy_msgpack/0.16.2/0.16.2_x86_64_darwin_2.7.10.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.2
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.0
+    copying pandas/tests/io/data/legacy_msgpack/0.16.0/0.16.0_x86_64_darwin_2.7.9.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.16.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.1
+    copying pandas/tests/io/data/legacy_msgpack/0.18.1/0.18.1_x86_64_darwin_3.5.2.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.1
+    copying pandas/tests/io/data/legacy_msgpack/0.18.1/0.18.1_x86_64_darwin_2.7.12.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.1
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.19.2
+    copying pandas/tests/io/data/legacy_msgpack/0.19.2/0.19.2_x86_64_darwin_3.6.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.19.2
+    copying pandas/tests/io/data/legacy_msgpack/0.19.2/0.19.2_x86_64_darwin_2.7.12.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.19.2
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.0
+    copying pandas/tests/io/data/legacy_msgpack/0.18.0/0.18.0_x86_64_darwin_3.5.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.0
+    copying pandas/tests/io/data/legacy_msgpack/0.18.0/0.18.0_AMD64_windows_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.0
+    copying pandas/tests/io/data/legacy_msgpack/0.18.0/0.18.0_AMD64_windows_3.5.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.0
+    copying pandas/tests/io/data/legacy_msgpack/0.18.0/0.18.0_x86_64_darwin_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.18.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_x86_64_darwin_3.4.4.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_x86_64_linux_3.4.4.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_AMD64_windows_3.4.4.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_x86_64_darwin_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.1_AMD64_windows_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_AMD64_windows_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.1_AMD64_windows_3.5.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    copying pandas/tests/io/data/legacy_msgpack/0.17.0/0.17.0_x86_64_linux_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.0
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_x86_64_linux_3.4.4.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_AMD64_windows_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_x86_64_darwin_3.5.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_x86_64_linux_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_x86_64_darwin_2.7.11.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/legacy_msgpack/0.17.1/0.17.1_AMD64_windows_3.5.1.msgpack -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/legacy_msgpack/0.17.1
+    copying pandas/tests/io/data/iris.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata6.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata3.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_mmap.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/banklist.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test1.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/tips.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata5.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata8_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata8_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata11_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata5_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata6_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata4_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata3_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata2_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata3_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata5_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata9_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata6_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata15.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata10_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata2_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata1_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata5_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata3_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata5_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata12_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata3_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata1_encoding.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata10_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata2_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata7_111.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata6_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata9_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata7_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/S4_EDUC1.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata14_118.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata7_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata1_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata4_114.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata13_dates.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata8_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata11_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata4_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata4_113.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata6_115.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/stata2_117.dta -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/categorical_0_15_2.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/categorical_0_14_1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/gbq_fake_job.txt -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/fixed_width_format.txt -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test1.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdtype.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_types.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test2.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdateoverflow.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test5.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testskiprows.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1904.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1900.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test3.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank_with_header.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_multisheet.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_index_name_pre17.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_converters.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test4.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testmultiindex.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_squeeze.xls -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_multisheet.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test1.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testskiprows.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test4.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdtype.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1904.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank_with_header.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1900.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_converters.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdateoverflow.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test2.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test3.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_index_name_pre17.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test5.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_types.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_squeeze.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testmultiindex.xlsx -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testmultiindex.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_squeeze.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_converters.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test3.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test1.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test2.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test5.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_index_name_pre17.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test4.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/blank_with_header.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1904.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/times_1900.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_multisheet.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdtype.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testdateoverflow.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/test_types.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/testskiprows.xlsm -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/unicode_series.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/test2.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/iris.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/salaries.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/sauron.SHIFT_JIS.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/test_mmap.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/sub_char.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/test1.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/tips.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/tips.csv.gz -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/tar_csv.tar.gz -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/salaries.csv.gz -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/test1.csv.gz -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/tips.csv.bz2 -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/test1.csv.bz2 -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/salaries.csv.bz2 -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/utf16_ex.txt -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/tar_csv.tar -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/utf16_ex_small.zip -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    copying pandas/tests/io/parser/data/salaries.csv.zip -> build/lib.linux-armv7l-2.7/pandas/tests/io/parser/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/airline.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/paxraw_d_short.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test_sas7bdat_1.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/DRXFCD_G.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test_sas7bdat_2.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/productsales.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/DEMO_G.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/datetime.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test_12659.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/SSHSV1_A.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/DEMO_G.xpt -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/paxraw_d_short.xpt -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/DRXFCD_G.xpt -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/SSHSV1_A.xpt -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test15.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test8.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test12.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/productsales.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test10.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/datetime.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test16.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test14.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test6.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test11.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test_12659.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test1.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/airline.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test13.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test3.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test7.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test2.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test9.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test5.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/sas/data/test4.sas7bdat -> build/lib.linux-armv7l-2.7/pandas/tests/io/sas/data
+    copying pandas/tests/io/data/nyse_wsj.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/spam.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/wikipedia_states.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/computer_sales_page.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/banklist.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/macau.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    copying pandas/tests/io/data/valid_markup.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/data/html_encoding
+    copying pandas/tests/io/data/html_encoding/letz_latin1.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/html_encoding
+    copying pandas/tests/io/data/html_encoding/chinese_utf-16.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/html_encoding
+    copying pandas/tests/io/data/html_encoding/chinese_utf-8.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/html_encoding
+    copying pandas/tests/io/data/html_encoding/chinese_utf-32.html -> build/lib.linux-armv7l-2.7/pandas/tests/io/data/html_encoding
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/json/data
+    copying pandas/tests/io/json/data/tsframe_iso_v012.json -> build/lib.linux-armv7l-2.7/pandas/tests/io/json/data
+    copying pandas/tests/io/json/data/tsframe_v012.json -> build/lib.linux-armv7l-2.7/pandas/tests/io/json/data
+    copying pandas/tests/io/json/data/tsframe_v012.json.zip -> build/lib.linux-armv7l-2.7/pandas/tests/io/json/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack/data
+    copying pandas/tests/io/msgpack/data/frame.mp -> build/lib.linux-armv7l-2.7/pandas/tests/io/msgpack/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/io/formats/data
+    copying pandas/tests/io/formats/data/unicode_series.csv -> build/lib.linux-armv7l-2.7/pandas/tests/io/formats/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/quotes.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/asof2.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/asof.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/trades.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/allow_exact_matches_and_tolerance.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/allow_exact_matches.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/tolerance.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/cut_data.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/trades2.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    copying pandas/tests/reshape/data/quotes2.csv -> build/lib.linux-armv7l-2.7/pandas/tests/reshape/data
+    creating build/lib.linux-armv7l-2.7/pandas/tests/tseries/data
+    copying pandas/tests/tseries/data/cday-0.14.1.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/tseries/data
+    copying pandas/tests/tseries/data/dateoffset_0_15_2.pickle -> build/lib.linux-armv7l-2.7/pandas/tests/tseries/data
+    UPDATING build/lib.linux-armv7l-2.7/pandas/_version.py
+    set build/lib.linux-armv7l-2.7/pandas/_version.py to '0.22.0'
+    running build_ext
+    building 'pandas.io.sas._sas' extension
+    creating build/temp.linux-armv7l-2.7
+    creating build/temp.linux-armv7l-2.7/pandas
+    creating build/temp.linux-armv7l-2.7/pandas/io
+    creating build/temp.linux-armv7l-2.7/pandas/io/sas
+    arm-linux-gnueabihf-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Ipandas/_libs/src/klib -Ipandas/_libs/src -I/usr/local/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c pandas/io/sas/sas.c -o build/temp.linux-armv7l-2.7/pandas/io/sas/sas.o -Wno-unused-function
+    In file included from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1816:0,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                     from pandas/io/sas/sas.c:526:
+    /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+     #warning "Using deprecated NumPy API, disable it by " \
+      ^
+    pandas/io/sas/sas.c: In function '__pyx_f_6pandas_2io_3sas_4_sas_rdc_decompress':
+    pandas/io/sas/sas.c:4090:65: warning: '__pyx_v_ctrl_bits' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         __pyx_t_8 = (((__pyx_v_ctrl_bits & __pyx_v_ctrl_mask) == 0) != 0);
+                                                                     ^
+    arm-linux-gnueabihf-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wl,-Bsymbolic-functions -Wl,-z,relro -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security build/temp.linux-armv7l-2.7/pandas/io/sas/sas.o -o build/lib.linux-armv7l-2.7/pandas/io/sas/_sas.so
+    building 'pandas._libs.properties' extension
+    creating build/temp.linux-armv7l-2.7/pandas/_libs
+    arm-linux-gnueabihf-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -fPIC -I/usr/local/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c pandas/_libs/properties.c -o build/temp.linux-armv7l-2.7/pandas/_libs/properties.o -Wno-unused-function
+    arm-linux-gnueabihf-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wl,-Bsymbolic-functions -Wl,-z,relro -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security build/temp.linux-armv7l-2.7/pandas/_libs/properties.o -o build/lib.linux-armv7l-2.7/pandas/_libs/properties.so
+    building 'pandas._libs.groupby' extension
+    arm-linux-gnueabihf-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Ipandas/_libs/src/klib -Ipandas/_libs/src -I/usr/local/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c pandas/_libs/groupby.c -o build/temp.linux-armv7l-2.7/pandas/_libs/groupby.o -Wno-unused-function
+    In file included from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1816:0,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                     from pandas/_libs/groupby.c:526:
+    /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+     #warning "Using deprecated NumPy API, disable it by " \
+      ^
+    arm-linux-gnueabihf-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wl,-Bsymbolic-functions -Wl,-z,relro -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security build/temp.linux-armv7l-2.7/pandas/_libs/groupby.o -o build/lib.linux-armv7l-2.7/pandas/_libs/groupby.so
+    building 'pandas._libs.join' extension
+    arm-linux-gnueabihf-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Ipandas/_libs/src/klib -Ipandas/_libs/src -I/usr/local/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c pandas/_libs/join.c -o build/temp.linux-armv7l-2.7/pandas/_libs/join.o -Wno-unused-function
+    In file included from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1816:0,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                     from /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                     from pandas/_libs/join.c:526:
+    /usr/local/lib/python2.7/dist-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+     #warning "Using deprecated NumPy API, disable it by " \
+      ^
+    pandas/_libs/join.c:182070:1: fatal error: error writing to /tmp/ccZkdw6l.s: No space left on device
+     }
+     ^
+    compilation terminated.
+    error: command 'arm-linux-gnueabihf-gcc' failed with exit status 1
+    
+    ----------------------------------------
+[91mCommand "/usr/bin/python -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-KNsMnE/pandas/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-thhSEY-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-KNsMnE/pandas/
+[0m
