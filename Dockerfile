@@ -13,23 +13,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-dev \
     python-pip \
     python-setuptools \
-    #python-scipy \
+    python-scipy \
     rsync \
     software-properties-common \
     unzip \
-    git && \
+    git \
+    && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
  RUN pip install --upgrade pip && \
   pip --no-cache-dir install \
-     numpy \
-     #scipy \
-     matplotlib \
      ipykernel \
      jupyterlab \
+     matplotlib \
+     numpy \
+     sklearn \
      pandas \
-     #sklearn && \
      && \
      python -m ipykernel.kernelspec
 
