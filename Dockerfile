@@ -9,12 +9,15 @@ ARG TF_FILE=tensorflow-1.7.0-cp27-none-any.whl
 COPY pip.conf /etc/pip.conf
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    gfortran \
     curl \
     libfreetype6-dev \
     libpng12-dev \
     libzmq3-dev \
     pkg-config \
     python \
+    python-dev \
     python-pip \
     python-setuptools \
     python-h5py \
@@ -34,12 +37,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # RUN pip install --upgrade pip && \ # Replaced as ericflores suggested https://github.com/DeftWork/rpi-tensorflow/issues/5#issuecomment-381374497
 RUN pip install --upgrade pip==9.0.3 && \
-     pip install  'numpy>=1.13.3' scipy matplotlib sklearn pandas && \
-     pip install tensorflow==1.7.0 && \
-     pip install ipykernel jupyterlab && \
+     pip install --upgrade \
+     grpcio==1.11.0 \
+     kiwisolver==1.0.1  \
+     MarkupSafe==1.0 \
+     pyzmq==17.0.0 \
+     scandir==1.7 \
+     subprocess32==3.2.7 \
+     tornado==5.0.2 \
+     numpy==1.14.2 \
+     scipy==1.0.1 \
+     matplotlib==2.2.2 \
+     pandas==0.22.0 \
+     scikit_learn==0.19.1 \
+     tensorflow==1.7.0 \
+     ipykernel \
+     jupyterlab && \
      python -m ipykernel.kernelspec && \
-     rm -rf /wheels &&\
-     date
+     rm -rf /wheels
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 

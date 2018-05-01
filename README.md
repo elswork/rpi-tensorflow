@@ -11,6 +11,7 @@ There is very similar image based on Python 3.4 instead of 2.7 [elswork/rpi-tens
 
 - Upgraded from Tensorflow 1.7.0rc1 to 1.7.0
 - Implementation of the Keras API
+- Included ALTAS optimized BLAS libraries and compiled versions of packages (numpy, scipy) using them.
 
 ### 1.7.0 rc1
 
