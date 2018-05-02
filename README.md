@@ -110,3 +110,9 @@ tensorboard --logdir=path/to/log-directory --host=0.0.0.0
 ```
 
 And pointing your browser to `http://localhost:6006`
+
+After the container is running you can use the Jupyter upload feature to copy notebooks and other small files to the container. However, it is not possible to load files larger than 15MB using the Jupyter interface. If you want to transfer multi-megabyte files like models generated in a more powerful machine, you can use docker cp command as follows:
+
+```sh
+docker cp mybigmodel.tf container_name:/notebooks/mybigmodel.tf
+```
