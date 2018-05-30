@@ -34,7 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
      python -m ipykernel.kernelspec
 
 ARG WHL_URL=http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/
-ARG WHL_FILE=tensorflow-1.8.0-cp27-none-any.whl
+ARG WHL_FILE=tensorflow-1.7.0-cp27-none-any.whl
 
 RUN pip --no-cache-dir install ${WHL_URL}${WHL_FILE} && \
     rm -f ${WHL_FILE}	
