@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
- # RUN pip install --upgrade pip && \ # Replaced as ericflores suggested https://github.com/DeftWork/rpi-tensorflow/issues/5#issuecomment-381374497
  RUN python -m pip install --upgrade pip && \
   pip --no-cache-dir install \
      ipykernel \
