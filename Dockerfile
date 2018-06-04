@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
  # RUN pip install --upgrade pip && \ # Replaced as ericflores suggested https://github.com/DeftWork/rpi-tensorflow/issues/5#issuecomment-381374497
- RUN pip install --upgrade pip==9.0.3 && \
+ RUN python -m pip install --upgrade pip && \
   pip --no-cache-dir install \
      ipykernel \
      jupyterlab \
@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
      python -m ipykernel.kernelspec
 
 ARG WHL_URL=http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/
-ARG WHL_FILE=tensorflow-1.7.0-cp27-none-any.whl
+ARG WHL_FILE=tensorflow-1.8.0-cp27-none-linux_armv7l.whl
 
 RUN pip --no-cache-dir install ${WHL_URL}${WHL_FILE} && \
     rm -f ${WHL_FILE}	
