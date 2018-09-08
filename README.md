@@ -1,9 +1,8 @@
 # DEPRECATED - BE AWARE
 
-PLEASE NOTE THAT THIS REPOSITORY IS DEPRECATED, WON'T BE LONGER DEVELOPED,IT HAS BEEN REPLACED BY THIS NEW REPOSITORY:
+PLEASE NOTE THAT THIS REPOSITORY IS DEPRECATED, WON'T BE LONGER DEVELOPED,IT HAS BEEN REPLACED BY THIS NEW SET OF REPOSITORIES:
 
-- [GitHub DeftWork/tensorflow](https://github.com/DeftWork/tensorflow)
-- [Docker Hub elswork/tensorflow/](https://hub.docker.com/r/elswork/tensorflow/)
+- [Data Science Docker Stack](https://goo.gl/qvx7Vv)
 
 ## Supercharged Machine Learning ToolBox for ARM
 
